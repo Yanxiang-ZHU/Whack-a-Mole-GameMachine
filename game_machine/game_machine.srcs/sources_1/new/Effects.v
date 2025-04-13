@@ -15,13 +15,13 @@ module Effects(
             sound <= 1'b0;
         end else begin
             case (game_state)
-                2'b01: begin // PLAY 状态
+                2'b01: begin
                     led <= target_led;
-                    sound <= 1'b1; // 播放音效
+                    sound <= 1'b1;
                 end
-                2'b10: begin // END 状态
-                    led <= 8'b11111111; // 所有灯亮
-                    sound <= 1'b1; // 播放结束音效
+                2'b10: begin
+                    led <= 8'b11111111;
+                    sound <= 1'b1;
                 end
                 default: begin
                     led <= 8'b0;
