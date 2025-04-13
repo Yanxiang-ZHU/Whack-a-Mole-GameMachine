@@ -8,9 +8,9 @@ module RandomGen(
 
     always @(posedge clk or posedge rst) begin
         if (rst) begin
-            random_num <= 8'b10101010; // 初始种子
+            random_num <= 8'b10101010;
         end else begin
-            random_num <= {random_num[6:0], random_num[7] ^ random_num[5]}; // 线性反馈移位寄存器
+            random_num <= {random_num[6:0], random_num[7] ^ random_num[5]};
         end
     end
 

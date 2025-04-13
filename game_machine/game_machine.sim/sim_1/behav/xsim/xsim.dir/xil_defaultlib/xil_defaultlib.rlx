@@ -1,0 +1,10 @@
+0.7
+2020.2
+Oct 13 2023
+20:47:58
+C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.sim/sim_1/behav/xsim/glbl.v,1697210496,verilog,,,,glbl,,,,,,,,
+C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sim_1/new/GameTop_tb.v,1744562411,verilog,,,,GameTop_tb,,,,,,,,
+C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/Effects.v,1744561926,verilog,,C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameControl.v,,Effects,,,,,,,,
+C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameControl.v,1744562689,verilog,,C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameTop.v,,GameControl,,,,,,,,
+C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameTop.v,1744561694,verilog,,C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/RandomGen.v,,GameTop,,,,,,,,
+C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/RandomGen.v,1744561727,verilog,,C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sim_1/new/GameTop_tb.v,,RandomGen,,,,,,,,
