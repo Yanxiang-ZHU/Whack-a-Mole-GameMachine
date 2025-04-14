@@ -17,8 +17,8 @@ module GameTop(
     wire [1:0] game_state;    // Game state
     wire [2:0] round;         // Current round
     wire [7:0] random_num;    // Random number
-    wire false; 
-    wire true;
+    wire false_press; 
+    wire true_press;
 
     // Random number generator module
     RandomGen random_gen(
@@ -39,8 +39,8 @@ module GameTop(
         .max_time(max_time),
         .target_led(target_led),
         .score(score),
-        .false(false),
-        .true(true)
+        .false_press(false_press),
+        .true_press(true_press)
     );
 
     // Lighting and sound effects module
@@ -64,8 +64,8 @@ module GameTop(
         .clk(clk),
         .rst_n(rst_n),
         .game_state(game_state),
-        .false(false),
-        .true(true),
+        .false_press(false_press),
+        .true_press(true_press),
         .buzzer(buzzer)
     );
 

@@ -11,8 +11,8 @@ module GameControl(
     output reg [47:0] max_time,
     output reg [7:0] target_led,
     output reg [5:0] score,
-    output reg false,
-    output reg true
+    output reg false_press,
+    output reg true_press
     );
 
     parameter IDLE = 2'b00, PLAY = 2'b01, GEND = 2'b10;
@@ -33,8 +33,8 @@ module GameControl(
             max_time <= ROUND1_TIME;
             target_led <= 8'b0;
             count <= 4'b0;
-            false <= 0;
-            true <= 0;
+            false_press <= 0;
+            true_press <= 0;
         end else begin
             case (game_state)
                 IDLE: begin
@@ -46,15 +46,15 @@ module GameControl(
                         timer <= 32'b0;
                         count <= 4'b0;
                         target_led <= 1 << (random_num % 8);
-                        false <= 0;
-                        true <= 0;
+                        false_press <= 0;
+                        true_press <= 0;
                     end
                 end
                 PLAY: begin
                     timer <= timer + 1;
-                    if (true || false) begin
-                        true <= 0;
-                        false <= 0;
+                    if (true_press || false_press) begin
+                        true_press <= 0;
+                        false_press <= 0;
                     end
                     
                     if (timer >= max_time) begin
@@ -66,9 +66,9 @@ module GameControl(
                         target_led <= 1 << (random_num % 8);
                         timer <= 32'b0;
                         count <= count + 1;
-                        true <= 1;
+                        true_press <= 1;
                     end else if ((btn != 8'b0) && (btn != target_led)) begin
-                        false <= 1;
+                        false_press <= 1;
                     end
 
                     if (round == 3'b001 && count == 8) begin
