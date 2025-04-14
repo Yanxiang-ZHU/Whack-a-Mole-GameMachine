@@ -59,4 +59,14 @@ module GameTop(
         .seg0(seg0)
     );
 
+    // Sound player module
+    SoundPlayer sound_player(
+        .clk(clk),
+        .rst_n(rst_n),
+        .game_state(game_state),
+        .false(false),
+        .true(true),
+        .buzzer(buzzer)
+    );
+
 endmodule

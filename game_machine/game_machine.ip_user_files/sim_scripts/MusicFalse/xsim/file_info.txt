@@ -1,0 +1,2 @@
+MusicFalse.v,verilog,xil_defaultlib,../../../../game_machine.gen/sources_1/ip/MusicFalse/sim/MusicFalse.v,
+glbl.v,Verilog,xil_defaultlib,glbl.v
