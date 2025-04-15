@@ -27,4 +27,4 @@ def wav_to_coe(wav_file, coe_file, memory_depth):
                     coe.write(";\n")
     print(f"COE file generated: {coe_file}")
 
-wav_to_coe("input.wav", "output.coe", memory_depth=10240000)
+wav_to_coe("end.wav", "end.coe", memory_depth=10240000)
