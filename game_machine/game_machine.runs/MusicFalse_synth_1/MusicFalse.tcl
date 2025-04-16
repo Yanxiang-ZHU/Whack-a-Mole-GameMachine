@@ -88,7 +88,7 @@ set_property ip_output_repo c:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_ip -quiet c:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/ip/MusicFalse/MusicFalse.xci
+read_ip -quiet C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/ip/MusicFalse/MusicFalse.xci
 set_property used_in_implementation false [get_files -all c:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.gen/sources_1/ip/MusicFalse/MusicFalse_ooc.xdc]
 
 OPTRACE "Adding files" END { }

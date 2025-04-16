@@ -23,6 +23,7 @@ module GameControl(
 
     reg [47:0] timer;
     reg [3:0] count;
+    reg [7:0] next_led;
 
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
@@ -32,6 +33,7 @@ module GameControl(
             timer <= 48'b0;
             max_time <= ROUND1_TIME;
             target_led <= 8'b0;
+            next_led <= 8'b0;
             count <= 4'b0;
             false_press <= 0;
             true_press <= 0;
@@ -59,11 +61,19 @@ module GameControl(
                     
                     if (timer >= max_time) begin
                         timer <= 32'b0;
-                        target_led <= 1 << (random_num % 8);
+                        next_led <= 1 << (random_num % 8);
+                        if (next_led == target_led) begin
+                            next_led <= 1 << (random_num % 8 - 1);
+                        end
+                        target_led <= next_led;
                         count <= count + 1;
                     end else if (btn == target_led) begin
                         score <= score + (round == 3'b001 ? 6'd1 : (round == 3'b010 ? 6'd2 : 6'd3));
-                        target_led <= 1 << (random_num % 8);
+                        next_led <= 1 << (random_num % 8);
+                        if (next_led == target_led) begin
+                            next_led <= 1 << (random_num % 8 - 1);
+                        end
+                        target_led <= next_led;
                         timer <= 32'b0;
                         count <= count + 1;
                         true_press <= 1;
