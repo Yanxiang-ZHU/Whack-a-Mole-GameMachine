@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="MusicIdle_synth_1" LaunchPart="xc7a200tfbg484-1" LaunchTime="1744613599">
+<GenRun Id="MusicIdle_synth_1" LaunchPart="xc7a200tfbg484-1" LaunchTime="1744721612">
   <File Type="PA-TCL" Name="MusicIdle.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="MusicIdle_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="MusicIdle_reports.tcl"/>
@@ -42,9 +42,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-      <Desc>Vivado Synthesis Defaults</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
     <Step Id="synth_design"/>
   </Strategy>
 </GenRun>

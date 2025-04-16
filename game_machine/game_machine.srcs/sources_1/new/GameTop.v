@@ -8,7 +8,11 @@ module GameTop(
     output [7:0] led,         // 8 LED outputs
     output [6:0] seg1,        // Tens place 7-segment display
     output [6:0] seg0,        // Ones place 7-segment display
-    output buzzer             // Buzzer output
+    output buzzer,            // Buzzer output
+    output [7:0] lcd_data,    // LCD data output
+    output lcd_enable,        // LCD enable signal
+    output lcd_rs,            // LCD register select signal
+    output lcd_rw             // LCD read/write signal
     );
 
     wire [5:0] score;         // 6-bit score display
@@ -19,6 +23,18 @@ module GameTop(
     wire [7:0] random_num;    // Random number
     wire false_press; 
     wire true_press;
+
+    reg [5:0] max_score;      // 6-bit maximum score
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            max_score <= 6'b0; // Reset max score to 0
+        end else if (game_state == 2'b10) begin // Assuming SOUNDEND indicates the end of a game
+            if (score > max_score) begin
+                max_score <= score; // Update max score if current score is higher
+            end
+        end
+    end
 
     // Random number generator module
     RandomGen random_gen(
@@ -67,6 +83,17 @@ module GameTop(
         .false_press(false_press),
         .true_press(true_press),
         .buzzer(buzzer)
+    );
+
+    // TextLCD module
+    TextLCD text_lcd(
+        .clk(clk),
+        .rst_n(rst_n),
+        .max_score(max_score),
+        .lcd_data(lcd_data),
+        .lcd_enable(lcd_enable),
+        .lcd_rs(lcd_rs),
+        .lcd_rw(lcd_rw)
     );
 
 endmodule
