@@ -1,1 +1,1 @@
---incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "unisims_ver" -L "unimacro_ver" -L "secureip" --snapshot "GameTop_tb_behav" "xil_defaultlib.GameTop_tb" "xil_defaultlib.glbl" -log "elaborate.log" 
+--incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "blk_mem_gen_v8_4_7" -L "unisims_ver" -L "unimacro_ver" -L "secureip" -L "xpm" --snapshot "GameTop_tb_behav" "xil_defaultlib.GameTop_tb" "xil_defaultlib.glbl" -log "elaborate.log" 

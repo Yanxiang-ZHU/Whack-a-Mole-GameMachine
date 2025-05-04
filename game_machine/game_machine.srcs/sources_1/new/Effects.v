@@ -10,17 +10,17 @@ module Effects(
 
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
-            led <= 8'b0;
+            led <= 8'b11111111;
         end else begin
             case (game_state)
                 2'b01: begin
-                    led <= target_led;
+                    led <= ~target_led;
                 end
                 2'b10: begin
-                    led <= 8'b11111111;
+                    led <= 8'b00000000;
                 end
                 default: begin
-                    led <= 8'b0;
+                    led <= 8'b11111111;
                 end
             endcase
         end

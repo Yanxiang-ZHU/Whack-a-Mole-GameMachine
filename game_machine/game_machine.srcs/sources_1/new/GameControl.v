@@ -16,10 +16,9 @@ module GameControl(
     );
 
     parameter IDLE = 2'b00, PLAY = 2'b01, GEND = 2'b10;
-    // FPGA 10MHz
-    parameter ROUND1_TIME = 48'd60000000; // 6 seconds
-    parameter ROUND2_TIME = 48'd40000000; // 4 seconds
-    parameter ROUND3_TIME = 48'd20000000; // 2 seconds
+    parameter ROUND1_TIME = 48'd300000000; // 6 seconds
+    parameter ROUND2_TIME = 48'd200000000; // 4 seconds
+    parameter ROUND3_TIME = 48'd100000000; // 2 seconds
 
     reg [47:0] timer;
     reg [3:0] count;
@@ -40,7 +39,7 @@ module GameControl(
         end else begin
             case (game_state)
                 IDLE: begin
-                    if (start) begin
+                    if (!start) begin
                         game_state <= PLAY;
                         round <= 3'b001;
                         score <= 6'b000000; // Reset score
@@ -95,7 +94,7 @@ module GameControl(
                 end
 
                 GEND: begin
-                    if (start) begin
+                    if (!start) begin
                         game_state <= IDLE;
                     end
                 end

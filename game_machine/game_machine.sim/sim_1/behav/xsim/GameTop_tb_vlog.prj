@@ -1,9 +1,16 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  \
+"../../../../game_machine.gen/sources_1/ip/MusicEnd/sim/MusicEnd.v" \
+"../../../../game_machine.gen/sources_1/ip/MusicFalse/sim/MusicFalse.v" \
+"../../../../game_machine.gen/sources_1/ip/MusicTrue/sim/MusicTrue.v" \
+"../../../../game_machine.gen/sources_1/ip/MusicIdle/sim/MusicIdle.v" \
 "../../../../game_machine.srcs/sources_1/new/Effects.v" \
 "../../../../game_machine.srcs/sources_1/new/GameControl.v" \
 "../../../../game_machine.srcs/sources_1/new/GameTop.v" \
 "../../../../game_machine.srcs/sources_1/new/RandomGen.v" \
+"../../../../game_machine.srcs/sources_1/new/ScoreDisplay.v" \
+"../../../../game_machine.srcs/sources_1/new/SoundPlayer.v" \
+"../../../../game_machine.srcs/sources_1/new/TextLCD.v" \
 "../../../../game_machine.srcs/sim_1/new/GameTop_tb.v" \
 
 # compile glbl module

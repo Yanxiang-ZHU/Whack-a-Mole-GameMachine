@@ -1,90 +1,178 @@
-module TextLCD(
-    input clk,                  // Clock signal
-    input rst_n,                // Reset signal
-    input [5:0] max_score,      // Maximum score to display
-    output reg [7:0] lcd_data,  // LCD data output
-    output reg lcd_enable,      // LCD enable signal
-    output reg lcd_rs,          // LCD register select (0 = command, 1 = data)
-    output reg lcd_rw           // LCD read/write (0 = write, 1 = read)
+module TextLCD (
+    input wire clk,             // 50MHz clock
+    input wire rst_n,           // Active low reset
+    input wire [7:0] max_score, // 0–255 max score
+    output reg [7:0] lcd_data,
+    output reg lcd_enable,
+    output reg lcd_rs,
+    output wire lcd_rw          // always 0: write mode
 );
 
-    // Internal states for LCD control
-    reg [3:0] state;
-    reg [7:0] char_data [0:15]; // Buffer for "Max Score: xxx"
-    reg [3:0] char_index;
+assign lcd_rw = 1'b0;
 
-    // Initialize the message
-    initial begin
-        char_data[0]  = "M";
-        char_data[1]  = "a";
-        char_data[2]  = "x";
-        char_data[3]  = " ";
-        char_data[4]  = "S";
-        char_data[5]  = "c";
-        char_data[6]  = "o";
-        char_data[7]  = "r";
-        char_data[8]  = "e";
-        char_data[9]  = ":";
-        char_data[10] = " "; // Space
-        char_data[11] = "0"; // Placeholder for hundreds digit
-        char_data[12] = "0"; // Placeholder for tens digit
-        char_data[13] = "0"; // Placeholder for ones digit
-        char_data[14] = " "; // Padding
-        char_data[15] = " "; // Padding
+reg [19:0] clk_div;
+wire slow_clk = clk_div[19];
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n)
+        clk_div <= 0;
+    else
+        clk_div <= clk_div + 1;
+end
+
+reg [7:0] char_buffer [0:15];
+reg [3:0] char_index;
+reg [3:0] state;
+reg [7:0] score_bcd [2:0];
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        char_buffer[0]  <= "M";
+        char_buffer[1]  <= "a";
+        char_buffer[2]  <= "x";
+        char_buffer[3]  <= " ";
+        char_buffer[4]  <= "S";
+        char_buffer[5]  <= "c";
+        char_buffer[6]  <= "o";
+        char_buffer[7]  <= "r";
+        char_buffer[8]  <= "e";
+        char_buffer[9]  <= ":";
+        char_buffer[10] <= " ";
+        char_buffer[11] <= "0";
+        char_buffer[12] <= "0";
+        char_buffer[13] <= "0";
+        char_buffer[14] <= " ";
+        char_buffer[15] <= " ";
+        char_buffer[16] <= " ";
+        char_buffer[17] <= " ";
+        char_buffer[18] <= " ";
+        char_buffer[19] <= " ";
+        char_buffer[20] <= " ";
+        char_buffer[21] <= " ";
+        char_buffer[22] <= " ";
+        char_buffer[23] <= " ";
+        char_buffer[24] <= " ";
+        char_buffer[25] <= " ";
+        char_buffer[26] <= " ";
+        char_buffer[27] <= " ";
+        char_buffer[28] <= " ";
+        char_buffer[29] <= " ";
+        char_buffer[30] <= " ";
+        char_buffer[31] <= " ";
+    end else begin
+        score_bcd[0] <= "0" + (max_score / 100);
+        score_bcd[1] <= "0" + ((max_score / 10) % 10);
+        score_bcd[2] <= "0" + (max_score % 10);
+
+        char_buffer[11] <= score_bcd[0];
+        char_buffer[12] <= score_bcd[1];
+        char_buffer[13] <= score_bcd[2];
     end
+end
 
-    // Update the score digits
-    always @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            char_data[11] <= "0";
-            char_data[12] <= "0";
-            char_data[13] <= "0";
-        end else begin
-            char_data[11] <= "0" + (max_score / 100);       // Hundreds digit
-            char_data[12] <= "0" + ((max_score / 10) % 10); // Tens digit
-            char_data[13] <= "0" + (max_score % 10);        // Ones digit
-        end
-    end
+localparam WAIT_POWER_ON = 4'd0,
+           INIT_0  = 4'd1,
+           INIT_1  = 4'd2,
+           INIT_2  = 4'd3,
+           INIT_3  = 4'd4,
+           INIT_4  = 4'd5,
+           IDLE    = 4'd6,
+           WRITE   = 4'd7,
+           DELAY   = 4'd8;
 
-    // LCD control logic (simplified for demonstration)
-    always @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            state <= 4'b0;
-            char_index <= 4'b0;
-            lcd_enable <= 1'b0;
-            lcd_rs <= 1'b0;
-            lcd_rw <= 1'b0;
-            lcd_data <= 8'b0;
-        end else begin
-            case (state)
-                4'b0000: begin
-                    lcd_rs <= 1'b0; // Command mode
-                    lcd_rw <= 1'b0; // Write mode
-                    lcd_data <= 8'b0011_1000; // Function set
-                    lcd_enable <= 1'b1;
-                    state <= 4'b0001;
+reg [7:0] command;
+reg [3:0] delay_flag;
+reg [15:0] delay_cnt;
+reg [1:0] enable_phase;
+reg [19:0] power_on_cnt;
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        state <= WAIT_POWER_ON;
+        lcd_enable <= 0;
+        lcd_rs <= 0;
+        lcd_data <= 8'h00;
+        char_index <= 0;
+        delay_cnt <= 0;
+        delay_flag <= 0;
+        enable_phase <= 0;
+        power_on_cnt <= 0;
+    end else begin
+        case (state)
+            WAIT_POWER_ON: begin
+                if (power_on_cnt < 20'd750_000)
+                    power_on_cnt <= power_on_cnt + 1;
+                else
+                    state <= INIT_0;
+            end
+            INIT_0: begin
+                lcd_rs <= 0;
+                lcd_data <= 8'h38; // Function set: 2 lines, 5x8 font
+                state <= DELAY;
+                delay_flag <= INIT_1;
+            end
+            INIT_1: begin
+                lcd_rs <= 0;
+                lcd_data <= 8'h0C; // Display ON
+                state <= DELAY;
+                delay_flag <= INIT_2;
+            end
+            INIT_2: begin
+                lcd_rs <= 0;
+                lcd_data <= 8'h06; // Entry mode set
+                state <= DELAY;
+                delay_flag <= INIT_3;
+            end
+            INIT_3: begin
+                lcd_rs <= 0;
+                lcd_data <= 8'h01; // Clear display
+                state <= DELAY;
+                delay_flag <= INIT_4;
+            end
+            INIT_4: begin
+                lcd_rs <= 0;
+                lcd_data <= 8'h80; // Set DDRAM address to 0x00
+                state <= DELAY;
+                delay_flag <= IDLE;
+            end
+            IDLE: begin
+                if (slow_clk) begin
+                    char_index <= 0;
+                    state <= WRITE;
                 end
-                4'b0001: begin
-                    lcd_enable <= 1'b0;
-                    state <= 4'b0010;
-                end
-                4'b0010: begin
-                    lcd_rs <= 1'b1; // Data mode
-                    lcd_data <= char_data[char_index];
-                    lcd_enable <= 1'b1;
-                    state <= 4'b0011;
-                end
-                4'b0011: begin
-                    lcd_enable <= 1'b0;
-                    if (char_index < 15) begin
-                        char_index <= char_index + 1;
-                        state <= 4'b0010;
-                    end else begin
-                        state <= 4'b0000; // Restart
+                lcd_enable <= 0;
+            end
+            WRITE: begin
+                lcd_rs <= 1; // Data mode
+                lcd_data <= char_buffer[char_index];
+                lcd_enable <= 1;
+                state <= DELAY;
+                delay_flag <= (char_index < 15) ? WRITE : IDLE;
+                char_index <= char_index + 1;
+            end
+            DELAY: begin
+                case (enable_phase)
+                    2'd0: begin
+                        lcd_enable <= 1;
+                        enable_phase <= 2'd1;
                     end
-                end
-            endcase
-        end
+                    2'd1: begin
+                        lcd_enable <= 0;
+                        enable_phase <= 2'd2;
+                    end
+                    2'd2: begin
+                        if (delay_cnt < 16'd5000) begin
+                            delay_cnt <= delay_cnt + 1;
+                        end else begin
+                            delay_cnt <= 0;
+                            enable_phase <= 0;
+                            state <= delay_flag;
+                        end
+                    end
+                endcase
+            end
+        endcase
     end
+end
 
 endmodule
