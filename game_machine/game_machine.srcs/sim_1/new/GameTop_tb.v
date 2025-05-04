@@ -6,24 +6,34 @@ module GameTop_tb;
     reg clk;
     reg rst_n;
     reg start;
-    reg [7:0] btn;
+    reg [3:0] row;
+    reg [3:0] column;
 
     // Outputs
     wire [7:0] led;
-    wire [6:0] seg1;
-    wire [6:0] seg0;
+    wire [6:0] seg;
+    wire [5:0] select;
     wire buzzer;
+    wire [7:0] lcd_data;
+    wire lcd_enable;
+    wire lcd_rs;
+    wire lcd_rw;
 
     // Instantiate the Unit Under Test (UUT)
     GameTop uut (
         .clk(clk),
         .rst_n(rst_n),
         .start(start),
-        .btn(btn),
+        .row(row),
+        .column(column),
         .led(led),
-        .seg1(seg1),
-        .seg0(seg0),
-        .buzzer(buzzer)
+        .seg(seg),
+        .select(select),
+        .buzzer(buzzer),
+        .lcd_data(lcd_data),
+        .lcd_enable(lcd_enable),
+        .lcd_rs(lcd_rs),
+        .lcd_rw(lcd_rw)
     );
 
     // Clock generation
@@ -32,62 +42,60 @@ module GameTop_tb;
         forever #50 clk = ~clk; // 100ns clock period (10 MHz)
     end
 
-    integer i;
     // Test sequence
     initial begin
         // Initialize inputs
         rst_n = 0;
         start = 0;
-        btn = 8'b0;
+        row = 4'b0000;
+        column = 4'b0000;
 
         // Reset the system
-        #200000000; // Wait for 0.2 seconds, switch the rst_n button
+        #1000000000;
         rst_n = 1;
 
         // Start the game
-        #200000000; // Wait for 0.2 seconds
+        #1000000000;
         start = 1;
-        #100000000; // hold start button for 1 second
+        #1000000000;
         start = 0;
 
-        // Simulate button presses
-        for (i = 0; i < 24; i = i + 1) begin
-            #300000000;
-        btn = 8'b00000001; // Press button 0
-            #200000000;
-        btn = 8'b00000000; // Release button
-            #300000000;
-        btn = 8'b00000010; // Press button 1
-            #200000000;
-            btn = 8'b00000000; // Release button
-            #300000000;
-            btn = 8'b00000100; // Press button 2
-            #200000000;
-            btn = 8'b00000000; // Release button
-            #300000000;
-            btn = 8'b00001000; // Press button 3
-            #200000000;
-            btn = 8'b00000000; // Release button
-            #300000000;
-            btn = 8'b00010000; // Press button 4
-            #200000000;
-            btn = 8'b00000000; // Release button
-            #300000000;
-            btn = 8'b00100000; // Press button 5
-            #200000000;
-            btn = 8'b00000000; // Release button
-            #300000000;
-            btn = 8'b01000000; // Press button 6
-            #200000000;
-            btn = 8'b00000000; // Release button
-            #300000000;
-            btn = 8'b10000000; // Press button 7
-            #200000000;
-        btn = 8'b00000000; // Release button
-        end
+        // Simulate button presses using row and column
+        #300000000;
+        row = 4'b0001; column = 4'b0001; // Simulate button 0
+        #200000000;
+        row = 4'b0000; column = 4'b0000; // Release button
+        #300000000;
+        row = 4'b0001; column = 4'b0010; // Simulate button 1
+        #200000000;
+        row = 4'b0000; column = 4'b0000; // Release button
+        #300000000;
+        row = 4'b0001; column = 4'b0100; // Simulate button 2
+        #200000000;
+        row = 4'b0000; column = 4'b0000; // Release button
+        #300000000;
+        row = 4'b0001; column = 4'b1000; // Simulate button 3
+        #200000000;
+        row = 4'b0000; column = 4'b0000; // Release button
+        #300000000;
+        row = 4'b0010; column = 4'b0001; // Simulate button 4
+        #200000000;
+        row = 4'b0000; column = 4'b0000; // Release button
+        #300000000;
+        row = 4'b0010; column = 4'b0010; // Simulate button 5
+        #200000000;
+        row = 4'b0000; column = 4'b0000; // Release button
+        #300000000;
+        row = 4'b0010; column = 4'b0100; // Simulate button 6
+        #200000000;
+        row = 4'b0000; column = 4'b0000; // Release button
+        #300000000;
+        row = 4'b0010; column = 4'b1000; // Simulate button 7
+        #200000000;
+        row = 4'b0000; column = 4'b0000; // Release button
 
         // Wait for some time to observe the game behavior
-        #5000000000; // Wait for 5 seconds
+        #5000; // Wait for 5 microseconds
 
         // End simulation
         $stop;

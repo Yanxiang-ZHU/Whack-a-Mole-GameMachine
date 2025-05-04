@@ -11,14 +11,18 @@ module SoundPlayer(
 
     // Parameters
     parameter IDLE = 2'b00, PLAY = 2'b01, SOUNDEND = 2'b10;
-    parameter NOTE_DURATION = 32'd227; // 10 MHz / 44.1 kHz ≈ 227 cycles per sample
+    parameter NOTE_DURATION = 32'd1135; // 50 MHz / 44.1 kHz
+    parameter SAMPLE_LENGTH = 17'd120000;
 
     // Internal registers
-    reg [31:0] duration_counter;    // Counter for note duration
-    reg [16:0] note_index;          // Current note index
-    reg [15:0] pwm_counter;         // Counter for PWM generation
-    reg [15:0] current_sample;      // Current audio sample (16-bit amplitude)
-    reg playing;                    // Music playing flag
+    reg [31:0] duration_counter;
+    reg [16:0] note_index;
+    reg [15:0] pwm_counter;
+    reg [15:0] current_sample;
+    reg playing;
+    reg [1:0] prev_game_state;  
+    reg prev_false_press;  
+    reg prev_true_press;
 
     // Wires for music data output from IP cores
     wire [15:0] music_idle_sample;
@@ -67,46 +71,54 @@ module SoundPlayer(
         if (!rst_n) begin
             duration_counter <= 32'b0;
             note_index <= 17'b0;
-            current_sample <= 16'h8000; // Silent (zero amplitude)
+            current_sample <= 16'h8000;
             pwm_counter <= 16'b0;
             buzzer <= 1'b0;
             playing <= 1'b0;
+            prev_game_state <= IDLE;
+            prev_false_press <= 0;
+            prev_true_press <= 0;
         end else begin
+            if (game_state != prev_game_state || 
+                false_press != prev_false_press || 
+                true_press != prev_true_press) begin
+                note_index <= 17'b0;
+                playing <= 1'b1;
+            end
+            
+            prev_game_state <= game_state;
+            prev_false_press <= false_press;
+            prev_true_press <= true_press;
+
             // Handle music playback
-            if (duration_counter >= NOTE_DURATION || !playing) begin
+            if (duration_counter >= NOTE_DURATION && playing) begin
                 // Select new music based on game_state and control signals
                 case (game_state)
-                    IDLE: begin
-                        current_sample <= music_idle_sample;
-                    end
+                    IDLE: current_sample <= music_idle_sample;
                     PLAY: begin
-                        if (false_press) begin
-                            current_sample <= music_false_sample;
-                        end else if (true_press) begin
-                            current_sample <= music_true_sample;
-                        end else begin
-                            current_sample <= 16'h8000; // Silent if no press
-                        end
+                        if (false_press) current_sample <= music_false_sample;
+                        else if (true_press) current_sample <= music_true_sample;
+                        else current_sample <= 16'h8000;
                     end
-                    SOUNDEND: begin
-                        current_sample <= music_end_sample;
-                    end
-                    default: begin
-                        current_sample <= music_idle_sample;
-                    end
+                    SOUNDEND: current_sample <= music_end_sample;
+                    default: current_sample <= music_idle_sample;
                 endcase
 
-                // Reset counters and move to the next note
+                // Reset counter and move to the next note
                 duration_counter <= 32'b0;
-                note_index <= (note_index + 1) % 80000; // Each IP core has 80000 entries
-                playing <= 1'b1;
+                if (note_index == SAMPLE_LENGTH - 1) begin
+                    playing <= 1'b0;
+                    note_index <= 17'b0;
+                end else begin
+                    note_index <= note_index + 1;
+                end
             end else begin
                 duration_counter <= duration_counter + 1;
             end
 
             // Generate PWM signal
             pwm_counter <= pwm_counter + 1;
-            buzzer <= (pwm_counter < current_sample) ? 1'b1 : 1'b0;
+            buzzer <= (pwm_counter < current_sample[15:8]) ? 1'b1 : 1'b0;
         end
     end
 

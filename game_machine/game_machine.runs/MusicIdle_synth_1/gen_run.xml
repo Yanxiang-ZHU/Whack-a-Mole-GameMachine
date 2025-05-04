@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="MusicIdle_synth_1" LaunchPart="xc7a200tfbg484-1" LaunchTime="1744721612">
   <File Type="PA-TCL" Name="MusicIdle.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="MusicIdle_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="MusicIdle_reports.tcl"/>
   <File Type="RDS-RDS" Name="MusicIdle.vds"/>
   <File Type="RDS-UTIL" Name="MusicIdle_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="MusicIdle_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="MusicIdle.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="MusicIdle_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="MusicIdle_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/MusicIdle" RelGenDir="$PGENDIR/MusicIdle">
     <File Path="$PSRCDIR/sources_1/ip/MusicIdle/MusicIdle.xci">
       <FileInfo>

@@ -1,4 +1,7 @@
-Running: xsim.dir/GameTop_tb_behav/xsimk.exe -simmode gui -wdb GameTop_tb_behav.wdb -simrunnum 0 -socket 59493
+Running: xsim.dir/GameTop_tb_behav/xsimk.exe -simmode gui -wdb GameTop_tb_behav.wdb -simrunnum 0 -socket 60467
 Design successfully loaded
-Design Loading Memory Usage: 8320 KB (Peak: 8320 KB)
-Design Loading CPU Usage: 46 ms
+Design Loading Memory Usage: 13040 KB (Peak: 13040 KB)
+Design Loading CPU Usage: 15 ms
+Simulation completed
+Simulation Memory Usage: 23888 KB (Peak: 23888 KB)
+Simulation CPU Usage: 843 ms

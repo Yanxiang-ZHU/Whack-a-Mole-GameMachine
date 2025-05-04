@@ -1,7 +1,7 @@
 # Clock signal
 set_property PACKAGE_PIN R4 [get_ports clk]
 set_property IOSTANDARD LVCMOS33 [get_ports clk]
-create_clock -period 100.000 [get_ports clk]
+create_clock -period 20.000 [get_ports clk]
 
 # Reset signal
 set_property PACKAGE_PIN U7 [get_ports rst_n]
@@ -62,26 +62,29 @@ set_property PACKAGE_PIN Y17 [get_ports led[7]]
 set_property IOSTANDARD LVCMOS33 [get_ports led[7]]
 
 # 7-segment display
-set_property PACKAGE_PIN AA15 [get_ports seg[0]]
-set_property IOSTANDARD LVCMOS33 [get_ports seg[0]]
+set_property PACKAGE_PIN AA15 [get_ports seg[7]]
+set_property IOSTANDARD LVCMOS33 [get_ports seg[7]]
 
-set_property PACKAGE_PIN AA14 [get_ports seg[1]]
-set_property IOSTANDARD LVCMOS33 [get_ports seg[1]]
+set_property PACKAGE_PIN AA14 [get_ports seg[6]]
+set_property IOSTANDARD LVCMOS33 [get_ports seg[6]]
 
-set_property PACKAGE_PIN V14 [get_ports seg[2]]
-set_property IOSTANDARD LVCMOS33 [get_ports seg[2]]
-
-set_property PACKAGE_PIN V13 [get_ports seg[3]]
-set_property IOSTANDARD LVCMOS33 [get_ports seg[3]]
-
-set_property PACKAGE_PIN U16 [get_ports seg[4]]
-set_property IOSTANDARD LVCMOS33 [get_ports seg[4]]
-
-set_property PACKAGE_PIN AB15 [get_ports seg[5]]
+set_property PACKAGE_PIN V14 [get_ports seg[5]]
 set_property IOSTANDARD LVCMOS33 [get_ports seg[5]]
 
-set_property PACKAGE_PIN Y13 [get_ports seg[6]]
-set_property IOSTANDARD LVCMOS33 [get_ports seg[6]]
+set_property PACKAGE_PIN V13 [get_ports seg[4]]
+set_property IOSTANDARD LVCMOS33 [get_ports seg[4]]
+
+set_property PACKAGE_PIN U16 [get_ports seg[3]]
+set_property IOSTANDARD LVCMOS33 [get_ports seg[3]]
+
+set_property PACKAGE_PIN AB15 [get_ports seg[2]]
+set_property IOSTANDARD LVCMOS33 [get_ports seg[2]]
+
+set_property PACKAGE_PIN Y13 [get_ports seg[1]]
+set_property IOSTANDARD LVCMOS33 [get_ports seg[1]]
+
+set_property PACKAGE_PIN W14 [get_ports seg[0]]
+set_property IOSTANDARD LVCMOS33 [get_ports seg[0]]
 
 # 7-segment display enable signals
 set_property PACKAGE_PIN AA11 [get_ports select[0]]
@@ -89,6 +92,18 @@ set_property IOSTANDARD LVCMOS33 [get_ports select[0]]
 
 set_property PACKAGE_PIN AA10 [get_ports select[1]]
 set_property IOSTANDARD LVCMOS33 [get_ports select[1]]
+
+set_property PACKAGE_PIN AB11 [get_ports select[2]]
+set_property IOSTANDARD LVCMOS33 [get_ports select[2]]
+
+set_property PACKAGE_PIN W15 [get_ports select[3]]
+set_property IOSTANDARD LVCMOS33 [get_ports select[3]]
+
+set_property PACKAGE_PIN Y11 [get_ports select[4]]
+set_property IOSTANDARD LVCMOS33 [get_ports select[4]]
+
+set_property PACKAGE_PIN Y12 [get_ports select[5]]
+set_property IOSTANDARD LVCMOS33 [get_ports select[5]]
 
 # Buzzer
 set_property PACKAGE_PIN AB16 [get_ports buzzer]
