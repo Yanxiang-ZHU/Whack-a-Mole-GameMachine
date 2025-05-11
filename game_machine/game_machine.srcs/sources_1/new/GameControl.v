@@ -15,14 +15,18 @@ module GameControl(
     output reg true_press
     );
 
-    parameter IDLE = 2'b00, PLAY = 2'b01, GEND = 2'b10;
+    parameter IDLE = 2'b00, PLAY = 2'b01, PAUSE = 2'b11, GEND = 2'b10;
     parameter ROUND1_TIME = 48'd300000000; // 6 seconds
     parameter ROUND2_TIME = 48'd200000000; // 4 seconds
     parameter ROUND3_TIME = 48'd100000000; // 2 seconds
 
+    parameter PAUSE_TIME = 48'd10000000; // 0.2 seconds
+
     reg [47:0] timer;
     reg [3:0] count;
     reg [7:0] next_led;
+    reg [47:0] pause_cnt;
+    reg restart;
 
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
@@ -36,6 +40,8 @@ module GameControl(
             count <= 4'b0;
             false_press <= 0;
             true_press <= 0;
+            restart <= 0;
+            pause_cnt <= 48'b0;
         end else begin
             case (game_state)
                 IDLE: begin
@@ -52,6 +58,17 @@ module GameControl(
                     end
                 end
                 PLAY: begin
+                    // press to pause the game
+                    if (!start && !restart) begin
+                        game_state <= PAUSE;
+                    end
+                    // back from PAUSE state
+                    if (restart) begin
+                        if (start) begin
+                            restart <= 0;
+                        end
+                    end
+
                     timer <= timer + 1;
                     if (true_press || false_press) begin
                         true_press <= 0;
@@ -90,6 +107,17 @@ module GameControl(
                         max_time <= ROUND3_TIME;
                     end else if (round == 3'b011 && count == 8) begin
                         game_state <= GEND;
+                    end
+                end
+
+                PAUSE: begin
+                    pause_cnt <= pause_cnt + 1;
+                    if (pause_cnt > PAUSE_TIME) begin
+                        restart <= 1;
+                    end
+                    if (restart && !start) begin
+                        game_state <= PLAY;
+                        pause_cnt <= 0;
                     end
                 end
 

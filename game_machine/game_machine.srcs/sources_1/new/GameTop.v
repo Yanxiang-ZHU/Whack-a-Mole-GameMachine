@@ -5,7 +5,7 @@ module GameTop(
     input rst_n,
     input start,              // Start button
     input [3:0] row,          // 4 rows for key matrix
-    input [3:0] column,       // 4 columns for key matrix
+    output [3:0] column,      // 4 columns for key matrix
     output [7:0] led,         // 8 LED outputs
     output [7:0] seg,         // 7-segment display segments
     output [5:0] select,      // Select signal for 7-segment display
@@ -35,31 +35,35 @@ module GameTop(
     wire buzzer_n;         // Buzzer signal (active low)
     assign buzzer = ~buzzer_n; // Invert the buzzer signal for active high
 
-    // Button matrix logic
+    wire [3:0] key_val;
+    wire key_val_vld;
+    KeyPress KeyPress_u (
+        .sclk(clk),
+        .s_rst_n(rst_n),
+        .row(row),
+        .col(column),
+        .key_val(key_val),
+        .key_val_vld(key_val_vld)
+    );
+
     always @(*) begin
-        if (row[0] == 1'b0) begin
-            if (column[0] == 1'b0) begin
-                btn = 8'b00000001; // Button 1 pressed
-            end else if (column[1] == 1'b0) begin
-                btn = 8'b00000010; // Button 2 pressed
-            end else if (column[2] == 1'b0) begin
-                btn = 8'b00000100; // Button 3 pressed
-            end else if (column[3] == 1'b0) begin
-                btn = 8'b00001000; // Button 4 pressed
-            end
-        end else if (row[1] == 1'b0) begin
-            if (column[0] == 1'b0) begin
-                btn = 8'b00010000; // Button 5 pressed
-            end else if (column[1] == 1'b0) begin
-                btn = 8'b00100000; // Button 6 pressed
-            end else if (column[2] == 1'b0) begin
-                btn = 8'b01000000; // Button 7 pressed
-            end else if (column[3] == 1'b0) begin
-                btn = 8'b10000000; // Button 8 pressed
-            end
-        end else 
-            btn = 8'b00000000; // No button pressed
+        if (key_val_vld) begin
+            case (key_val)
+                4'd1: btn = 8'b00000001; // Button 1 pressed
+                4'd2: btn = 8'b00000010; // Button 2 pressed
+                4'd3: btn = 8'b00000100; // Button 3 pressed
+                4'd4: btn = 8'b00001000; // Button 4 pressed
+                4'd5: btn = 8'b00010000; // Button 5 pressed
+                4'd6: btn = 8'b00100000; // Button 6 pressed
+                4'd7: btn = 8'b01000000; // Button 7 pressed
+                4'd8: btn = 8'b10000000; // Button 8 pressed
+                default: btn = 8'b00000000; // No button pressed
+            endcase
+        end else begin
+            btn = 8'b00000000; // No button pressed if key_val_vld is low
+        end
     end
+
 
     // 7-segment display logic
     always @(posedge clk or negedge rst_n) begin
@@ -73,8 +77,6 @@ module GameTop(
                 if (select_reg == 6'b111110) begin
                     select_reg <= 6'b111101;
                 end else if (select_reg == 6'b111101) begin
-                    select_reg <= 6'b111011;
-                end else if (select_reg == 6'b111011) begin
                     select_reg <= 6'b111110;
                 end
             end
@@ -85,7 +87,6 @@ module GameTop(
         case (select_reg)
             6'b111110: seg_reg = {seg0, 1'b1}; // Display seg0
             6'b111101: seg_reg = {seg1, 1'b1}; // Display seg1
-            6'b111011: seg_reg = {row, column};
             default: seg_reg = 8'b11111111; // Default off
         endcase
     end
@@ -162,6 +163,15 @@ module GameTop(
         .lcd_enable(lcd_enable),
         .lcd_rs(lcd_rs),
         .lcd_rw(lcd_rw)
+    );
+
+
+    ila_0 ila_0_inst0 (
+    .clk(clk),
+    .probe0(row),
+    .probe1(column),
+    .probe2(btn),
+    .probe3(buzzer)
     );
 
 endmodule

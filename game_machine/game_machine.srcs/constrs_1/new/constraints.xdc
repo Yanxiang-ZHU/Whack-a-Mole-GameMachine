@@ -12,28 +12,28 @@ set_property PACKAGE_PIN T4 [get_ports start]
 set_property IOSTANDARD LVCMOS33 [get_ports start]
 
 # Button inputs
-set_property PACKAGE_PIN W12 [get_ports row[0]]
+set_property PACKAGE_PIN N14 [get_ports row[0]]
 set_property IOSTANDARD LVCMOS33 [get_ports row[0]]
 
-set_property PACKAGE_PIN W11 [get_ports row[1]]
+set_property PACKAGE_PIN R14 [get_ports row[1]]
 set_property IOSTANDARD LVCMOS33 [get_ports row[1]]
 
-set_property PACKAGE_PIN W16 [get_ports row[2]]
+set_property PACKAGE_PIN P17 [get_ports row[2]]
 set_property IOSTANDARD LVCMOS33 [get_ports row[2]]
 
-set_property PACKAGE_PIN U15 [get_ports row[3]]
+set_property PACKAGE_PIN R16 [get_ports row[3]]
 set_property IOSTANDARD LVCMOS33 [get_ports row[3]]
 
-set_property PACKAGE_PIN AB12 [get_ports column[0]]
+set_property PACKAGE_PIN N13 [get_ports column[0]]
 set_property IOSTANDARD LVCMOS33 [get_ports column[0]]
 
-set_property PACKAGE_PIN V15 [get_ports column[1]]
+set_property PACKAGE_PIN P14 [get_ports column[1]]
 set_property IOSTANDARD LVCMOS33 [get_ports column[1]]
 
-set_property PACKAGE_PIN T16 [get_ports column[2]]
+set_property PACKAGE_PIN N17 [get_ports column[2]]
 set_property IOSTANDARD LVCMOS33 [get_ports column[2]]
 
-set_property PACKAGE_PIN Y14 [get_ports column[3]]
+set_property PACKAGE_PIN P15 [get_ports column[3]]
 set_property IOSTANDARD LVCMOS33 [get_ports column[3]]
 
 # LED outputs

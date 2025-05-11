@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a200tfbg484-1" LaunchTime="1746364720" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/GameTop.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a200tfbg484-1" LaunchTime="1746955268" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/GameTop.dcp">
   <File Type="PA-TCL" Name="GameTop.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="GameTop_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="GameTop_reports.tcl"/>
@@ -19,6 +19,13 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/GameControl.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/KeyPress.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -124,4 +131,5 @@
   <BlockFileSet Type="BlockSrcs" Name="MusicEnd"/>
   <BlockFileSet Type="BlockSrcs" Name="MusicFalse"/>
   <BlockFileSet Type="BlockSrcs" Name="MusicTrue"/>
+  <BlockFileSet Type="BlockSrcs" Name="ila_0"/>
 </GenRun>
