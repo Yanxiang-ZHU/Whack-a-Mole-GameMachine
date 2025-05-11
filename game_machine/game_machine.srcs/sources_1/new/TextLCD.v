@@ -20,8 +20,8 @@ always @(posedge clk or negedge rst_n) begin
         clk_div <= clk_div + 1;
 end
 
-reg [7:0] char_buffer [0:15];
-reg [3:0] char_index;
+reg [7:0] char_buffer [0:31];
+reg [4:0] char_index;
 reg [3:0] state;
 reg [7:0] score_bcd [2:0];
 
@@ -51,14 +51,14 @@ always @(posedge clk or negedge rst_n) begin
         char_buffer[21] <= " ";
         char_buffer[22] <= " ";
         char_buffer[23] <= " ";
-        char_buffer[24] <= " ";
-        char_buffer[25] <= " ";
-        char_buffer[26] <= " ";
-        char_buffer[27] <= " ";
-        char_buffer[28] <= " ";
-        char_buffer[29] <= " ";
-        char_buffer[30] <= " ";
-        char_buffer[31] <= " ";
+        char_buffer[24] <= "A";
+        char_buffer[25] <= "S";
+        char_buffer[26] <= "I";
+        char_buffer[27] <= "C";
+        char_buffer[28] <= "2";
+        char_buffer[29] <= "0";
+        char_buffer[30] <= "2";
+        char_buffer[31] <= "5";
     end else begin
         score_bcd[0] <= "0" + (max_score / 100);
         score_bcd[1] <= "0" + ((max_score / 10) % 10);
@@ -147,7 +147,7 @@ always @(posedge clk or negedge rst_n) begin
                 lcd_data <= char_buffer[char_index];
                 lcd_enable <= 1;
                 state <= DELAY;
-                delay_flag <= (char_index < 15) ? WRITE : IDLE;
+                delay_flag <= (char_index < 31) ? WRITE : IDLE;
                 char_index <= char_index + 1;
             end
             DELAY: begin
