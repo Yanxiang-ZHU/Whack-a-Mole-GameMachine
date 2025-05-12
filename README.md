@@ -38,6 +38,11 @@
     - `TextLCD.v`：1602 LCD 控制。
     - `KeyPress.v`：矩阵键盘输入处理。
   - **`ip/`:** Block RAM IP 核，用于存储音频数据（例如 `MusicIdle`、`MusicTrue`）。
+ 
+## 模块设计与流程
+![模块框图](https://github.com/user-attachments/assets/3201a039-4586-4532-9885-e925a7b14e50)
+
+![设计流程图](https://github.com/user-attachments/assets/7ea0a5cd-3ec2-406c-a457-8ea63888417e)
 
 ## 使用说明
 
@@ -83,7 +88,7 @@
 
 ## 游戏视频
 
-由于Github上文件大小限制，演示视频上传至视频网站（或百度网度内下载观看），欢迎前往观看打地鼠游戏演示视频：[https://pan.baidu.com/s/1uYaHy95xZXPiYyR3n_VMdg?pwd=asic](https://pan.baidu.com/s/1uYaHy95xZXPiYyR3n_VMdg?pwd=asic)
+由于Github上文件大小限制，演示视频上传至视频网站（或百度网度内下载观看），欢迎前往观看打地鼠游戏演示视频：[https://www.bilibili.com/video/BV151EEzgEFc?vd_source=2bc6659aadb0a404a7fd334b853e4620](https://www.bilibili.com/video/BV151EEzgEFc?vd_source=2bc6659aadb0a404a7fd334b853e4620)
 
 ## 链接
 
