@@ -12,8 +12,8 @@ module KeyPress(
 parameter DELAY_1MS   = 'd49_999;
 parameter DELAY_10MS  = 'd499_999;
 
-reg     [15:0]  cnt_1ms;
-reg     [18:0]  cnt_10ms;
+reg [15:0] cnt_1ms;
+reg [18:0] cnt_10ms;
 
 wire key_and;
 reg key_and_d1;
@@ -37,7 +37,7 @@ end
 
 always @(posedge sclk or negedge s_rst_n) begin
     if(s_rst_n == 1'b0)
-        col = 4'b1110;
+        col <= 4'b1110;
     else if(cnt_1ms >= DELAY_1MS)
         col <= {col[2:0], col[3]};
 end

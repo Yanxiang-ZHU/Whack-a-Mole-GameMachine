@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a200tfbg484-1" LaunchTime="1746955268" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/GameTop.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a200tfbg484-1" LaunchTime="1746983161" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/GameTop.dcp">
   <File Type="PA-TCL" Name="GameTop.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="GameTop_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="GameTop_reports.tcl"/>
   <File Type="RDS-RDS" Name="GameTop.vds"/>
   <File Type="RDS-UTIL" Name="GameTop_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="GameTop_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="GameTop.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="GameTop_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="GameTop_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/Effects.v">
@@ -127,9 +124,5 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="MusicIdle"/>
-  <BlockFileSet Type="BlockSrcs" Name="MusicEnd"/>
-  <BlockFileSet Type="BlockSrcs" Name="MusicFalse"/>
-  <BlockFileSet Type="BlockSrcs" Name="MusicTrue"/>
   <BlockFileSet Type="BlockSrcs" Name="ila_0"/>
 </GenRun>

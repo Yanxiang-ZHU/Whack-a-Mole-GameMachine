@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Sun May 11 17:21:17 2025
-# Process ID: 2440
+# Start of session at: Mon May 12 01:06:11 2025
+# Process ID: 43084
 # Current directory: C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.runs/synth_1
 # Command line: vivado.exe -log GameTop.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source GameTop.tcl
 # Log file: C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.runs/synth_1/GameTop.vds
@@ -12,7 +12,7 @@
 # Running On: YanX, OS: Windows, CPU Frequency: 2803 MHz, CPU Physical cores: 4, Host memory: 16885 MB
 #-----------------------------------------------------------
 source GameTop.tcl -notrace
-create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:10 . Memory (MB): peak = 493.238 ; gain = 180.926
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:16 . Memory (MB): peak = 492.809 ; gain = 181.781
 Command: read_checkpoint -auto_incremental -incremental C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/utils_1/imports/synth_1/GameTop.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/utils_1/imports/synth_1/GameTop.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -25,12 +25,10 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 22504
+INFO: [Synth 8-7075] Helper process launched with PID 29540
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:12 . Memory (MB): peak = 1412.926 ; gain = 439.695
+Starting RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:23 . Memory (MB): peak = 1411.922 ; gain = 440.598
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-11241] undeclared symbol 'seg1', assumed default net type 'wire' [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameTop.v:143]
-INFO: [Synth 8-11241] undeclared symbol 'seg0', assumed default net type 'wire' [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameTop.v:144]
 INFO: [Synth 8-6157] synthesizing module 'GameTop' [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameTop.v:3]
 INFO: [Synth 8-6157] synthesizing module 'KeyPress' [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/KeyPress.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'KeyPress' (0#1) [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/KeyPress.v:3]
@@ -38,63 +36,50 @@ INFO: [Synth 8-6157] synthesizing module 'RandomGen' [C:/Users/39551/Desktop/ASI
 INFO: [Synth 8-6155] done synthesizing module 'RandomGen' (0#1) [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/RandomGen.v:3]
 INFO: [Synth 8-6157] synthesizing module 'GameControl' [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameControl.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'GameControl' (0#1) [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameControl.v:3]
-WARNING: [Synth 8-689] width (32) of port connection 'max_time' does not match port width (48) of module 'GameControl' [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameTop.v:124]
+WARNING: [Synth 8-689] width (32) of port connection 'max_time' does not match port width (48) of module 'GameControl' [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameTop.v:87]
 INFO: [Synth 8-6157] synthesizing module 'Effects' [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/Effects.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'Effects' (0#1) [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/Effects.v:3]
 INFO: [Synth 8-6157] synthesizing module 'ScoreDisplay' [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/ScoreDisplay.v:3]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/ScoreDisplay.v:66]
 INFO: [Synth 8-6155] done synthesizing module 'ScoreDisplay' (0#1) [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/ScoreDisplay.v:3]
-WARNING: [Synth 8-689] width (1) of port connection 'seg1' does not match port width (7) of module 'ScoreDisplay' [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameTop.v:143]
-WARNING: [Synth 8-689] width (1) of port connection 'seg0' does not match port width (7) of module 'ScoreDisplay' [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameTop.v:144]
 INFO: [Synth 8-6157] synthesizing module 'SoundPlayer' [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/SoundPlayer.v:3]
-INFO: [Synth 8-6157] synthesizing module 'MusicIdle' [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.runs/synth_1/.Xil/Vivado-2440-YanX/realtime/MusicIdle_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'MusicIdle' (0#1) [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.runs/synth_1/.Xil/Vivado-2440-YanX/realtime/MusicIdle_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'MusicTrue' [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.runs/synth_1/.Xil/Vivado-2440-YanX/realtime/MusicTrue_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'MusicTrue' (0#1) [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.runs/synth_1/.Xil/Vivado-2440-YanX/realtime/MusicTrue_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'MusicFalse' [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.runs/synth_1/.Xil/Vivado-2440-YanX/realtime/MusicFalse_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'MusicFalse' (0#1) [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.runs/synth_1/.Xil/Vivado-2440-YanX/realtime/MusicFalse_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'MusicEnd' [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.runs/synth_1/.Xil/Vivado-2440-YanX/realtime/MusicEnd_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'MusicEnd' (0#1) [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.runs/synth_1/.Xil/Vivado-2440-YanX/realtime/MusicEnd_stub.v:6]
+INFO: [Synth 8-226] default block is never used [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/SoundPlayer.v:67]
 INFO: [Synth 8-6155] done synthesizing module 'SoundPlayer' (0#1) [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/SoundPlayer.v:3]
 INFO: [Synth 8-6157] synthesizing module 'TextLCD' [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/TextLCD.v:1]
 INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/TextLCD.v:154]
 INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/TextLCD.v:101]
 INFO: [Synth 8-6155] done synthesizing module 'TextLCD' (0#1) [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/TextLCD.v:1]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameTop.v:169]
-INFO: [Synth 8-6157] synthesizing module 'ila_0' [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.runs/synth_1/.Xil/Vivado-2440-YanX/realtime/ila_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'ila_0' (0#1) [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.runs/synth_1/.Xil/Vivado-2440-YanX/realtime/ila_0_stub.v:6]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameTop.v:134]
+INFO: [Synth 8-6157] synthesizing module 'ila_0' [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.runs/synth_1/.Xil/Vivado-43084-YanX/realtime/ila_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'ila_0' (0#1) [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.runs/synth_1/.Xil/Vivado-43084-YanX/realtime/ila_0_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'GameTop' (0#1) [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameTop.v:3]
-WARNING: [Synth 8-7137] Register col_reg in module KeyPress has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/KeyPress.v:40]
+WARNING: [Synth 8-7137] Register sequence_reg[0] in module SoundPlayer has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/SoundPlayer.v:104]
+WARNING: [Synth 8-7137] Register sequence_reg[1] in module SoundPlayer has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/SoundPlayer.v:104]
+WARNING: [Synth 8-7137] Register sequence_reg[2] in module SoundPlayer has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/SoundPlayer.v:104]
+WARNING: [Synth 8-7137] Register seq_length_reg in module SoundPlayer has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/SoundPlayer.v:107]
 WARNING: [Synth 8-7137] Register score_bcd_reg[2] in module TextLCD has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/TextLCD.v:63]
 WARNING: [Synth 8-7137] Register score_bcd_reg[1] in module TextLCD has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/TextLCD.v:63]
 WARNING: [Synth 8-7137] Register score_bcd_reg[0] in module TextLCD has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/TextLCD.v:63]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'ila_0_inst0'. This will prevent further optimization [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameTop.v:169]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'KeyPress_u'. This will prevent further optimization [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameTop.v:40]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'game_control'. This will prevent further optimization [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameTop.v:116]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'ila_0_inst0'. This will prevent further optimization [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameTop.v:134]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'KeyPress_u'. This will prevent further optimization [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameTop.v:37]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'game_control'. This will prevent further optimization [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameTop.v:79]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:15 . Memory (MB): peak = 1530.754 ; gain = 557.523
+Finished RTL Elaboration : Time (s): cpu = 00:00:15 ; elapsed = 00:00:31 . Memory (MB): peak = 1530.992 ; gain = 559.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:16 . Memory (MB): peak = 1530.754 ; gain = 557.523
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:31 . Memory (MB): peak = 1530.992 ; gain = 559.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:16 . Memory (MB): peak = 1530.754 ; gain = 557.523
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:31 . Memory (MB): peak = 1530.992 ; gain = 559.668
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.028 . Memory (MB): peak = 1530.754 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.052 . Memory (MB): peak = 1530.992 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [c:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.gen/sources_1/ip/MusicIdle/MusicIdle/MusicIdle_in_context.xdc] for cell 'sound_player/music_idle'
-Finished Parsing XDC File [c:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.gen/sources_1/ip/MusicIdle/MusicIdle/MusicIdle_in_context.xdc] for cell 'sound_player/music_idle'
-Parsing XDC File [c:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.gen/sources_1/ip/MusicFalse/MusicFalse/MusicFalse_in_context.xdc] for cell 'sound_player/music_false'
-Finished Parsing XDC File [c:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.gen/sources_1/ip/MusicFalse/MusicFalse/MusicFalse_in_context.xdc] for cell 'sound_player/music_false'
-Parsing XDC File [c:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.gen/sources_1/ip/MusicTrue/MusicTrue/MusicTrue_in_context.xdc] for cell 'sound_player/music_true'
-Finished Parsing XDC File [c:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.gen/sources_1/ip/MusicTrue/MusicTrue/MusicTrue_in_context.xdc] for cell 'sound_player/music_true'
-Parsing XDC File [c:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.gen/sources_1/ip/MusicEnd/MusicEnd/MusicEnd_in_context.xdc] for cell 'sound_player/music_end'
-Finished Parsing XDC File [c:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.gen/sources_1/ip/MusicEnd/MusicEnd/MusicEnd_in_context.xdc] for cell 'sound_player/music_end'
 Parsing XDC File [c:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.gen/sources_1/ip/ila_0/ila_0/ila_0_in_context.xdc] for cell 'ila_0_inst0'
 Finished Parsing XDC File [c:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.gen/sources_1/ip/ila_0/ila_0/ila_0_in_context.xdc] for cell 'ila_0_inst0'
 Parsing XDC File [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/constrs_1/new/constraints.xdc]
@@ -103,37 +88,32 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/GameTop_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1629.051 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1618.223 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 1629.051 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.099 . Memory (MB): peak = 1618.223 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:31 . Memory (MB): peak = 1629.051 ; gain = 655.820
+Finished Constraint Validation : Time (s): cpu = 00:00:27 ; elapsed = 00:01:01 . Memory (MB): peak = 1618.223 ; gain = 646.898
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a200tfbg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:31 . Memory (MB): peak = 1629.051 ; gain = 655.820
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:27 ; elapsed = 00:01:01 . Memory (MB): peak = 1618.223 ; gain = 646.898
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property KEEP_HIERARCHY = SOFT for sound_player/music_idle. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for sound_player/music_false. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for sound_player/music_true. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for sound_player/music_end. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for ila_0_inst0. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:31 . Memory (MB): peak = 1629.051 ; gain = 655.820
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:01:01 . Memory (MB): peak = 1618.223 ; gain = 646.898
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'game_state_reg' in module 'GameControl'
 INFO: [Synth 8-802] inferred FSM for state register 'enable_phase_reg' in module 'TextLCD'
-INFO: [Synth 8-802] inferred FSM for state register 'select_reg_reg' in module 'GameTop'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -143,6 +123,7 @@ INFO: [Synth 8-802] inferred FSM for state register 'select_reg_reg' in module '
                    PAUSE |                               11 |                               11
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'game_state_reg' using encoding 'sequential' in module 'GameControl'
+WARNING: [Synth 8-327] inferring latch for variable 'seg_led_temp_reg' [C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/ScoreDisplay.v:67]
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -151,16 +132,8 @@ INFO: [Synth 8-3354] encoded FSM with state register 'game_state_reg' using enco
                  iSTATE1 |                              100 |                               10
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'enable_phase_reg' using encoding 'one-hot' in module 'TextLCD'
----------------------------------------------------------------------------------------------------
-                   State |                     New Encoding |                Previous Encoding 
----------------------------------------------------------------------------------------------------
-                 iSTATE0 |                                0 |                           111110
-                  iSTATE |                                1 |                           111101
-*
----------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'select_reg_reg' using encoding 'sequential' in module 'GameTop'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:32 . Memory (MB): peak = 1629.051 ; gain = 655.820
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:28 ; elapsed = 00:01:05 . Memory (MB): peak = 1618.223 ; gain = 646.898
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -168,54 +141,57 @@ Start RTL Component Statistics
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input   48 Bit       Adders := 1     
-	   2 Input   32 Bit       Adders := 1     
-	   2 Input   17 Bit       Adders := 1     
+	   2 Input   25 Bit       Adders := 1     
 	   2 Input   16 Bit       Adders := 1     
 	   2 Input   13 Bit       Adders := 1     
 	   2 Input    6 Bit       Adders := 1     
 	   2 Input    5 Bit       Adders := 1     
-	   2 Input    4 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 5     
+	   2 Input    2 Bit       Adders := 1     
 +---XORs : 
-	   2 Input      1 Bit         XORs := 1     
+	   4 Input      1 Bit         XORs := 1     
 +---Registers : 
 	               48 Bit    Registers := 2     
-	               17 Bit    Registers := 1     
-	               16 Bit    Registers := 3     
-	                8 Bit    Registers := 37    
+	               32 Bit    Registers := 2     
+	               16 Bit    Registers := 2     
+	                8 Bit    Registers := 38    
 	                7 Bit    Registers := 3     
-	                6 Bit    Registers := 2     
+	                6 Bit    Registers := 3     
 	                5 Bit    Registers := 1     
 	                4 Bit    Registers := 5     
-	                3 Bit    Registers := 1     
-	                2 Bit    Registers := 1     
+	                3 Bit    Registers := 4     
+	                2 Bit    Registers := 3     
 	                1 Bit    Registers := 12    
 +---Muxes : 
 	   2 Input   48 Bit        Muxes := 2     
 	   4 Input   48 Bit        Muxes := 2     
 	   2 Input   28 Bit        Muxes := 1     
-	   2 Input   17 Bit        Muxes := 2     
-	   2 Input   16 Bit        Muxes := 3     
-	   4 Input   16 Bit        Muxes := 1     
+	   2 Input   25 Bit        Muxes := 5     
+	   2 Input   16 Bit        Muxes := 1     
 	   2 Input   13 Bit        Muxes := 1     
-	   2 Input    8 Bit        Muxes := 1     
+	   8 Input   11 Bit        Muxes := 2     
+	   2 Input    8 Bit        Muxes := 2     
 	   4 Input    8 Bit        Muxes := 1     
-	   3 Input    8 Bit        Muxes := 2     
-	  10 Input    8 Bit        Muxes := 2     
-	   7 Input    7 Bit        Muxes := 1     
+	   3 Input    8 Bit        Muxes := 1     
+	  10 Input    8 Bit        Muxes := 1     
+	   8 Input    8 Bit        Muxes := 1     
 	   4 Input    6 Bit        Muxes := 1     
-	   2 Input    6 Bit        Muxes := 1     
 	  10 Input    5 Bit        Muxes := 1     
-	   2 Input    4 Bit        Muxes := 6     
 	  17 Input    4 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 2     
 	   4 Input    4 Bit        Muxes := 1     
 	  10 Input    4 Bit        Muxes := 2     
-	   4 Input    3 Bit        Muxes := 1     
-	   2 Input    3 Bit        Muxes := 1     
-	   2 Input    2 Bit        Muxes := 2     
+	   4 Input    3 Bit        Muxes := 2     
+	   2 Input    3 Bit        Muxes := 2     
+	   5 Input    3 Bit        Muxes := 2     
+	   3 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 8     
 	   3 Input    2 Bit        Muxes := 1     
 	  11 Input    2 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 21    
-	   4 Input    1 Bit        Muxes := 14    
+	   4 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 31    
+	   4 Input    1 Bit        Muxes := 15    
+	   7 Input    1 Bit        Muxes := 1     
 	  10 Input    1 Bit        Muxes := 9     
 	   3 Input    1 Bit        Muxes := 3     
 ---------------------------------------------------------------------------------
@@ -234,43 +210,31 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-WARNING: [Synth 8-3917] design GameTop has port seg[7] driven by constant 0
-WARNING: [Synth 8-3917] design GameTop has port seg[6] driven by constant 0
-WARNING: [Synth 8-3917] design GameTop has port seg[5] driven by constant 0
-WARNING: [Synth 8-3917] design GameTop has port seg[4] driven by constant 0
-WARNING: [Synth 8-3917] design GameTop has port seg[3] driven by constant 0
-WARNING: [Synth 8-3917] design GameTop has port seg[2] driven by constant 0
-WARNING: [Synth 8-3917] design GameTop has port seg[0] driven by constant 1
-WARNING: [Synth 8-3917] design GameTop has port select[5] driven by constant 1
-WARNING: [Synth 8-3917] design GameTop has port select[4] driven by constant 1
-WARNING: [Synth 8-3917] design GameTop has port select[3] driven by constant 1
-WARNING: [Synth 8-3917] design GameTop has port select[2] driven by constant 1
-WARNING: [Synth 8-3917] design GameTop has port lcd_rw driven by constant 0
 WARNING: [Synth 8-7129] Port random_num[7] in module GameControl is either unconnected or has no load
 WARNING: [Synth 8-7129] Port random_num[6] in module GameControl is either unconnected or has no load
 WARNING: [Synth 8-7129] Port random_num[5] in module GameControl is either unconnected or has no load
 WARNING: [Synth 8-7129] Port random_num[4] in module GameControl is either unconnected or has no load
 WARNING: [Synth 8-7129] Port random_num[3] in module GameControl is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:43 . Memory (MB): peak = 1629.051 ; gain = 655.820
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:36 ; elapsed = 00:01:21 . Memory (MB): peak = 1618.223 ; gain = 646.898
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:31 ; elapsed = 00:00:51 . Memory (MB): peak = 1629.051 ; gain = 655.820
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:41 ; elapsed = 00:01:33 . Memory (MB): peak = 1618.223 ; gain = 646.898
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:31 ; elapsed = 00:00:52 . Memory (MB): peak = 1629.051 ; gain = 655.820
+Finished Timing Optimization : Time (s): cpu = 00:00:43 ; elapsed = 00:01:38 . Memory (MB): peak = 1618.223 ; gain = 646.898
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:31 ; elapsed = 00:00:52 . Memory (MB): peak = 1629.051 ; gain = 655.820
+Finished Technology Mapping : Time (s): cpu = 00:00:44 ; elapsed = 00:01:39 . Memory (MB): peak = 1618.223 ; gain = 646.898
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -288,37 +252,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:35 ; elapsed = 00:00:59 . Memory (MB): peak = 1629.051 ; gain = 655.820
+Finished IO Insertion : Time (s): cpu = 00:00:49 ; elapsed = 00:01:50 . Memory (MB): peak = 1618.223 ; gain = 646.898
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:35 ; elapsed = 00:00:59 . Memory (MB): peak = 1629.051 ; gain = 655.820
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:49 ; elapsed = 00:01:50 . Memory (MB): peak = 1618.223 ; gain = 646.898
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:35 ; elapsed = 00:01:00 . Memory (MB): peak = 1629.051 ; gain = 655.820
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:49 ; elapsed = 00:01:50 . Memory (MB): peak = 1618.223 ; gain = 646.898
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:35 ; elapsed = 00:01:00 . Memory (MB): peak = 1629.051 ; gain = 655.820
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:49 ; elapsed = 00:01:50 . Memory (MB): peak = 1618.223 ; gain = 646.898
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:35 ; elapsed = 00:01:00 . Memory (MB): peak = 1629.051 ; gain = 655.820
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:49 ; elapsed = 00:01:50 . Memory (MB): peak = 1618.223 ; gain = 646.898
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:36 ; elapsed = 00:01:00 . Memory (MB): peak = 1629.051 ; gain = 655.820
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:49 ; elapsed = 00:01:50 . Memory (MB): peak = 1618.223 ; gain = 646.898
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -329,57 +293,51 @@ Report BlackBoxes:
 |      |BlackBox name |Instances |
 +------+--------------+----------+
 |1     |ila_0         |         1|
-|2     |MusicIdle     |         1|
-|3     |MusicTrue     |         1|
-|4     |MusicFalse    |         1|
-|5     |MusicEnd      |         1|
 +------+--------------+----------+
 
 Report Cell Usage: 
-+------+-----------+------+
-|      |Cell       |Count |
-+------+-----------+------+
-|1     |MusicEnd   |     1|
-|2     |MusicFalse |     1|
-|3     |MusicIdle  |     1|
-|4     |MusicTrue  |     1|
-|5     |ila        |     1|
-|6     |BUFG       |     1|
-|7     |CARRY4     |    74|
-|8     |LUT1       |     9|
-|9     |LUT2       |    99|
-|10    |LUT3       |    88|
-|11    |LUT4       |   116|
-|12    |LUT5       |    66|
-|13    |LUT6       |   129|
-|14    |FDCE       |   361|
-|15    |FDPE       |    17|
-|16    |FDRE       |    12|
-|17    |IBUF       |     7|
-|18    |OBUF       |    38|
-+------+-----------+------+
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |ila    |     1|
+|2     |BUFG   |     1|
+|3     |CARRY4 |   262|
+|4     |LUT1   |    14|
+|5     |LUT2   |   373|
+|6     |LUT3   |   379|
+|7     |LUT4   |   239|
+|8     |LUT5   |    56|
+|9     |LUT6   |   145|
+|10    |FDCE   |   378|
+|11    |FDPE   |    25|
+|12    |FDRE   |    18|
+|13    |LD     |     4|
+|14    |IBUF   |     7|
+|15    |OBUF   |    38|
++------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:36 ; elapsed = 00:01:00 . Memory (MB): peak = 1629.051 ; gain = 655.820
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:49 ; elapsed = 00:01:50 . Memory (MB): peak = 1618.223 ; gain = 646.898
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 18 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:25 ; elapsed = 00:00:56 . Memory (MB): peak = 1629.051 ; gain = 557.523
-Synthesis Optimization Complete : Time (s): cpu = 00:00:36 ; elapsed = 00:01:00 . Memory (MB): peak = 1629.051 ; gain = 655.820
+Synthesis finished with 0 errors, 0 critical warnings and 7 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:28 ; elapsed = 00:01:35 . Memory (MB): peak = 1618.223 ; gain = 559.668
+Synthesis Optimization Complete : Time (s): cpu = 00:00:49 ; elapsed = 00:01:51 . Memory (MB): peak = 1618.223 ; gain = 646.898
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 1629.051 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 74 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.034 . Memory (MB): peak = 1618.223 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 266 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1629.051 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1618.223 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
+  A total of 4 instances were transformed.
+  LD => LDCE: 4 instances
 
-Synth Design complete | Checksum: 193a3f8a
+Synth Design complete | Checksum: f1f18fed
 INFO: [Common 17-83] Releasing license: Synthesis
-60 Infos, 26 Warnings, 0 Critical Warnings and 0 Errors encountered.
+50 Infos, 16 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:42 ; elapsed = 00:01:16 . Memory (MB): peak = 1629.051 ; gain = 1104.492
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1629.051 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:56 ; elapsed = 00:02:20 . Memory (MB): peak = 1618.223 ; gain = 1085.863
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.033 . Memory (MB): peak = 1618.223 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.runs/synth_1/GameTop.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file GameTop_utilization_synth.rpt -pb GameTop_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun May 11 17:22:56 2025...
+INFO: [Common 17-206] Exiting Vivado at Mon May 12 01:09:19 2025...

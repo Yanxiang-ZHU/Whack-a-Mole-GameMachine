@@ -140,10 +140,6 @@ OPTRACE "set parameters" START { }
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
   add_files -quiet C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.runs/synth_1/GameTop.dcp
-  read_ip -quiet C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/ip/MusicIdle/MusicIdle.xci
-  read_ip -quiet C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/ip/MusicFalse/MusicFalse.xci
-  read_ip -quiet C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/ip/MusicTrue/MusicTrue.xci
-  read_ip -quiet C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/ip/MusicEnd/MusicEnd.xci
   read_ip -quiet C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/ip/ila_0/ila_0.xci
 OPTRACE "read constraints: implementation" START { }
   read_xdc C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/constrs_1/new/constraints.xdc

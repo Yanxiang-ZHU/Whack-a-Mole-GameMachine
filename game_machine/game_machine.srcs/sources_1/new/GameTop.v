@@ -7,8 +7,8 @@ module GameTop(
     input [3:0] row,          // 4 rows for key matrix
     output [3:0] column,      // 4 columns for key matrix
     output [7:0] led,         // 8 LED outputs
-    output [7:0] seg,         // 7-segment display segments
-    output [5:0] select,      // Select signal for 7-segment display
+    output [7:0] seg_led,         // 7-segment display segments
+    output [5:0] sel,      // Select signal for 7-segment display
     output buzzer,            // Buzzer output
     output [7:0] lcd_data,    // LCD data output
     output lcd_enable,        // LCD enable signal
@@ -32,9 +32,6 @@ module GameTop(
     reg [7:0] seg_reg;        // Register for segment signal
     reg [15:0] refresh_counter; // Counter for refreshing 7-segment display
 
-    wire buzzer_n;         // Buzzer signal (active low)
-    assign buzzer = ~buzzer_n; // Invert the buzzer signal for active high
-
     wire [3:0] key_val;
     wire key_val_vld;
     KeyPress KeyPress_u (
@@ -47,52 +44,18 @@ module GameTop(
     );
 
     always @(*) begin
-        if (key_val_vld) begin
-            case (key_val)
-                4'd1: btn = 8'b00000001; // Button 1 pressed
-                4'd2: btn = 8'b00000010; // Button 2 pressed
-                4'd3: btn = 8'b00000100; // Button 3 pressed
-                4'd4: btn = 8'b00001000; // Button 4 pressed
-                4'd5: btn = 8'b00010000; // Button 5 pressed
-                4'd6: btn = 8'b00100000; // Button 6 pressed
-                4'd7: btn = 8'b01000000; // Button 7 pressed
-                4'd8: btn = 8'b10000000; // Button 8 pressed
-                default: btn = 8'b00000000; // No button pressed
-            endcase
-        end else begin
-            btn = 8'b00000000; // No button pressed if key_val_vld is low
-        end
-    end
-
-
-    // 7-segment display logic
-    always @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            refresh_counter <= 16'b0;
-            select_reg <= 6'b111110;
-        end else begin
-            refresh_counter <= refresh_counter + 1;
-            if (refresh_counter == 16'd50000) begin
-                refresh_counter <= 16'b0;
-                if (select_reg == 6'b111110) begin
-                    select_reg <= 6'b111101;
-                end else if (select_reg == 6'b111101) begin
-                    select_reg <= 6'b111110;
-                end
-            end
-        end
-    end
-
-    always @(*) begin
-        case (select_reg)
-            6'b111110: seg_reg = {seg0, 1'b1}; // Display seg0
-            6'b111101: seg_reg = {seg1, 1'b1}; // Display seg1
-            default: seg_reg = 8'b11111111; // Default off
+        case (key_val)
+            4'd0: btn = 8'b00000001; // Button 1 pressed
+            4'd1: btn = 8'b00000010; // Button 2 pressed
+            4'd2: btn = 8'b00000100; // Button 3 pressed
+            4'd3: btn = 8'b00001000; // Button 4 pressed
+            4'd4: btn = 8'b00010000; // Button 5 pressed
+            4'd5: btn = 8'b00100000; // Button 6 pressed
+            4'd6: btn = 8'b01000000; // Button 7 pressed
+            4'd7: btn = 8'b10000000; // Button 8 pressed
+            default: btn = 8'b00000000; // No button pressed
         endcase
     end
-
-    assign select = select_reg;
-    assign seg = seg_reg;
 
     // Max score logic
     always @(posedge clk or negedge rst_n) begin
@@ -139,9 +102,11 @@ module GameTop(
 
     // Score display module
     ScoreDisplay score_display(
+        .sclk(clk),
+        .s_rst_n(rst_n),
         .score(score),
-        .seg1(seg1),
-        .seg0(seg0)
+        .sel(sel),
+        .seg_led(seg_led)
     );
 
     // Sound player module
@@ -151,7 +116,7 @@ module GameTop(
         .game_state(game_state),
         .false_press(false_press),
         .true_press(true_press),
-        .buzzer(buzzer_n)
+        .buzzer(buzzer)
     );
 
     // TextLCD module
@@ -169,9 +134,9 @@ module GameTop(
     ila_0 ila_0_inst0 (
     .clk(clk),
     .probe0(row),
-    .probe1(column),
+    .probe1(key_val),
     .probe2(btn),
-    .probe3(buzzer)
+    .probe3(key_val_vld)
     );
 
 endmodule

@@ -77,17 +77,17 @@ module GameControl(
                     
                     if (timer >= max_time) begin
                         timer <= 32'b0;
-                        next_led <= 1 << (random_num % 8);
+                        next_led <= 1 << (random_num[2:0]);
                         if (next_led == target_led) begin
-                            next_led <= 1 << (random_num % 8 - 1);
+                            next_led <= 1 << (~random_num[2:0]);
                         end
                         target_led <= next_led;
                         count <= count + 1;
                     end else if (btn == target_led) begin
                         score <= score + (round == 3'b001 ? 6'd1 : (round == 3'b010 ? 6'd2 : 6'd3));
-                        next_led <= 1 << (random_num % 8);
+                        next_led <= 1 << (random_num[2:0]);
                         if (next_led == target_led) begin
-                            next_led <= 1 << (random_num % 8 - 1);
+                            next_led <= 1 << (~random_num[2:0]);
                         end
                         target_led <= next_led;
                         timer <= 32'b0;

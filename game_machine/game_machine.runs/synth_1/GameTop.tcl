@@ -103,18 +103,6 @@ read_verilog -library xil_defaultlib {
   C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/TextLCD.v
   C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/new/GameTop.v
 }
-read_ip -quiet C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/ip/MusicIdle/MusicIdle.xci
-set_property used_in_implementation false [get_files -all c:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.gen/sources_1/ip/MusicIdle/MusicIdle_ooc.xdc]
-
-read_ip -quiet C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/ip/MusicFalse/MusicFalse.xci
-set_property used_in_implementation false [get_files -all c:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.gen/sources_1/ip/MusicFalse/MusicFalse_ooc.xdc]
-
-read_ip -quiet C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/ip/MusicTrue/MusicTrue.xci
-set_property used_in_implementation false [get_files -all c:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.gen/sources_1/ip/MusicTrue/MusicTrue_ooc.xdc]
-
-read_ip -quiet C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/ip/MusicEnd/MusicEnd.xci
-set_property used_in_implementation false [get_files -all c:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.gen/sources_1/ip/MusicEnd/MusicEnd_ooc.xdc]
-
 read_ip -quiet C:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.srcs/sources_1/ip/ila_0/ila_0.xci
 set_property used_in_synthesis false [get_files -all c:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila_impl.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/39551/Desktop/ASIC/Whack-a-Mole-GameMachine/game_machine/game_machine.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila_impl.xdc]
