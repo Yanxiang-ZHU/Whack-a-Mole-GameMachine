@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Sun May 11 17:30:01 2025
+| Date         : Mon May 12 01:24:46 2025
 | Host         : YanX running 64-bit major release  (build 9200)
 | Command      : report_methodology -file GameTop_methodology_drc_routed.rpt -pb GameTop_methodology_drc_routed.pb -rpx GameTop_methodology_drc_routed.rpx
 | Design       : GameTop
@@ -23,13 +23,16 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 47
-+-----------+----------+-------------------------------+------------+
-| Rule      | Severity | Description                   | Violations |
-+-----------+----------+-------------------------------+------------+
-| LUTAR-1   | Warning  | LUT drives async reset alert  | 4          |
-| TIMING-18 | Warning  | Missing input or output delay | 43         |
-+-----------+----------+-------------------------------+------------+
+             Violations found: 67
++-----------+----------+--------------------------------+------------+
+| Rule      | Severity | Description                    | Violations |
++-----------+----------+--------------------------------+------------+
+| LUTAR-1   | Warning  | LUT drives async reset alert   | 4          |
+| TIMING-16 | Warning  | Large setup violation          | 15         |
+| TIMING-18 | Warning  | Missing input or output delay  | 43         |
+| TIMING-20 | Warning  | Non-clocked latch              | 4          |
+| LATCH-1   | Advisory | Existing latches in the design | 1          |
++-----------+----------+--------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
@@ -59,6 +62,81 @@ LUT drives async reset alert
 LUT cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gwrrd_rst_sync_stage[2].wrst_inst/ngwrdrst.grst.g7serrst.wr_rst_reg[2]_i_1, with 2 or more inputs, drives asynchronous preset/clear pin(s) dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.wr_rst_reg_reg[0]/PRE,
 dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.wr_rst_reg_reg[1]/PRE
 dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.wr_rst_reg_reg[2]/PRE. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+TIMING-16#1 Warning
+Large setup violation  
+There is a large setup violation of -10.725 ns between sound_player/sequence_reg[1][2]_replica/C (clocked by clk) and sound_player/tone_half_period_reg[10]/D (clocked by clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#2 Warning
+Large setup violation  
+There is a large setup violation of -12.818 ns between sound_player/sequence_reg[1][2]_replica/C (clocked by clk) and sound_player/tone_half_period_reg[9]/D (clocked by clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#3 Warning
+Large setup violation  
+There is a large setup violation of -15.120 ns between sound_player/sequence_reg[1][2]_replica/C (clocked by clk) and sound_player/tone_half_period_reg[8]/D (clocked by clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#4 Warning
+Large setup violation  
+There is a large setup violation of -17.303 ns between sound_player/sequence_reg[1][2]_replica/C (clocked by clk) and sound_player/tone_half_period_reg[7]/D (clocked by clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#5 Warning
+Large setup violation  
+There is a large setup violation of -19.662 ns between sound_player/sequence_reg[1][2]_replica/C (clocked by clk) and sound_player/tone_half_period_reg[6]/D (clocked by clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#6 Warning
+Large setup violation  
+There is a large setup violation of -21.303 ns between sound_player/sequence_reg[1][2]_replica/C (clocked by clk) and sound_player/tone_half_period_reg[5]/D (clocked by clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#7 Warning
+Large setup violation  
+There is a large setup violation of -23.749 ns between sound_player/sequence_reg[1][2]_replica/C (clocked by clk) and sound_player/tone_half_period_reg[4]/D (clocked by clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#8 Warning
+Large setup violation  
+There is a large setup violation of -25.706 ns between sound_player/sequence_reg[1][2]_replica/C (clocked by clk) and sound_player/tone_half_period_reg[3]/D (clocked by clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#9 Warning
+Large setup violation  
+There is a large setup violation of -27.749 ns between sound_player/sequence_reg[1][2]_replica/C (clocked by clk) and sound_player/tone_half_period_reg[2]/D (clocked by clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#10 Warning
+Large setup violation  
+There is a large setup violation of -29.901 ns between sound_player/sequence_reg[1][2]_replica/C (clocked by clk) and sound_player/tone_half_period_reg[1]/D (clocked by clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#11 Warning
+Large setup violation  
+There is a large setup violation of -3.757 ns between sound_player/sequence_reg[1][2]_replica/C (clocked by clk) and sound_player/tone_half_period_reg[14]/D (clocked by clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#12 Warning
+Large setup violation  
+There is a large setup violation of -32.613 ns between sound_player/sequence_reg[1][2]_replica/C (clocked by clk) and sound_player/tone_half_period_reg[0]/D (clocked by clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#13 Warning
+Large setup violation  
+There is a large setup violation of -4.754 ns between sound_player/sequence_reg[1][2]_replica/C (clocked by clk) and sound_player/tone_half_period_reg[13]/D (clocked by clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#14 Warning
+Large setup violation  
+There is a large setup violation of -6.977 ns between sound_player/sequence_reg[1][2]_replica/C (clocked by clk) and sound_player/tone_half_period_reg[12]/D (clocked by clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#15 Warning
+Large setup violation  
+There is a large setup violation of -9.004 ns between sound_player/sequence_reg[1][2]_replica/C (clocked by clk) and sound_player/tone_half_period_reg[11]/D (clocked by clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-18#1 Warning
@@ -208,72 +286,97 @@ Related violations: <none>
 
 TIMING-18#30 Warning
 Missing input or output delay  
-An output delay is missing on seg[0] relative to the rising and/or falling clock edge(s) of clk.
+An output delay is missing on seg_led[0] relative to the rising and/or falling clock edge(s) of clk.
 Related violations: <none>
 
 TIMING-18#31 Warning
 Missing input or output delay  
-An output delay is missing on seg[1] relative to the rising and/or falling clock edge(s) of clk.
+An output delay is missing on seg_led[1] relative to the rising and/or falling clock edge(s) of clk.
 Related violations: <none>
 
 TIMING-18#32 Warning
 Missing input or output delay  
-An output delay is missing on seg[2] relative to the rising and/or falling clock edge(s) of clk.
+An output delay is missing on seg_led[2] relative to the rising and/or falling clock edge(s) of clk.
 Related violations: <none>
 
 TIMING-18#33 Warning
 Missing input or output delay  
-An output delay is missing on seg[3] relative to the rising and/or falling clock edge(s) of clk.
+An output delay is missing on seg_led[3] relative to the rising and/or falling clock edge(s) of clk.
 Related violations: <none>
 
 TIMING-18#34 Warning
 Missing input or output delay  
-An output delay is missing on seg[4] relative to the rising and/or falling clock edge(s) of clk.
+An output delay is missing on seg_led[4] relative to the rising and/or falling clock edge(s) of clk.
 Related violations: <none>
 
 TIMING-18#35 Warning
 Missing input or output delay  
-An output delay is missing on seg[5] relative to the rising and/or falling clock edge(s) of clk.
+An output delay is missing on seg_led[5] relative to the rising and/or falling clock edge(s) of clk.
 Related violations: <none>
 
 TIMING-18#36 Warning
 Missing input or output delay  
-An output delay is missing on seg[6] relative to the rising and/or falling clock edge(s) of clk.
+An output delay is missing on seg_led[6] relative to the rising and/or falling clock edge(s) of clk.
 Related violations: <none>
 
 TIMING-18#37 Warning
 Missing input or output delay  
-An output delay is missing on seg[7] relative to the rising and/or falling clock edge(s) of clk.
+An output delay is missing on seg_led[7] relative to the rising and/or falling clock edge(s) of clk.
 Related violations: <none>
 
 TIMING-18#38 Warning
 Missing input or output delay  
-An output delay is missing on select[0] relative to the rising and/or falling clock edge(s) of clk.
+An output delay is missing on sel[0] relative to the rising and/or falling clock edge(s) of clk.
 Related violations: <none>
 
 TIMING-18#39 Warning
 Missing input or output delay  
-An output delay is missing on select[1] relative to the rising and/or falling clock edge(s) of clk.
+An output delay is missing on sel[1] relative to the rising and/or falling clock edge(s) of clk.
 Related violations: <none>
 
 TIMING-18#40 Warning
 Missing input or output delay  
-An output delay is missing on select[2] relative to the rising and/or falling clock edge(s) of clk.
+An output delay is missing on sel[2] relative to the rising and/or falling clock edge(s) of clk.
 Related violations: <none>
 
 TIMING-18#41 Warning
 Missing input or output delay  
-An output delay is missing on select[3] relative to the rising and/or falling clock edge(s) of clk.
+An output delay is missing on sel[3] relative to the rising and/or falling clock edge(s) of clk.
 Related violations: <none>
 
 TIMING-18#42 Warning
 Missing input or output delay  
-An output delay is missing on select[4] relative to the rising and/or falling clock edge(s) of clk.
+An output delay is missing on sel[4] relative to the rising and/or falling clock edge(s) of clk.
 Related violations: <none>
 
 TIMING-18#43 Warning
 Missing input or output delay  
-An output delay is missing on select[5] relative to the rising and/or falling clock edge(s) of clk.
+An output delay is missing on sel[5] relative to the rising and/or falling clock edge(s) of clk.
+Related violations: <none>
+
+TIMING-20#1 Warning
+Non-clocked latch  
+The latch score_display/seg_led_temp_reg[0] cannot be properly analyzed as its control pin score_display/seg_led_temp_reg[0]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#2 Warning
+Non-clocked latch  
+The latch score_display/seg_led_temp_reg[1] cannot be properly analyzed as its control pin score_display/seg_led_temp_reg[1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#3 Warning
+Non-clocked latch  
+The latch score_display/seg_led_temp_reg[2] cannot be properly analyzed as its control pin score_display/seg_led_temp_reg[2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#4 Warning
+Non-clocked latch  
+The latch score_display/seg_led_temp_reg[3] cannot be properly analyzed as its control pin score_display/seg_led_temp_reg[3]/G is not reached by a timing clock
+Related violations: <none>
+
+LATCH-1#1 Advisory
+Existing latches in the design  
+There are 4 latches found in the design. Inferred latches are often the result of HDL coding mistakes, such as incomplete if or case statements.
 Related violations: <none>
 
 

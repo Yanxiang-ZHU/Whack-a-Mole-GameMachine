@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Sun May 11 17:30:07 2025
+| Date             : Mon May 12 01:24:50 2025
 | Host             : YanX running 64-bit major release  (build 9200)
 | Command          : report_power -file GameTop_power_routed.rpt -pb GameTop_power_summary_routed.pb -rpx GameTop_power_routed.rpx
 | Design           : GameTop
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.211        |
+| Total On-Chip Power (W)  | 0.163        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.064        |
-| Device Static (W)        | 0.148        |
+| Dynamic (W)              | 0.025        |
+| Device Static (W)        | 0.138        |
 | Effective TJA (C/W)      | 2.5          |
-| Max Ambient (C)          | 84.5         |
-| Junction Temperature (C) | 25.5         |
+| Max Ambient (C)          | 84.6         |
+| Junction Temperature (C) | 25.4         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,20 +52,20 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.016 |        4 |       --- |             --- |
-| Slice Logic              |     0.002 |    11438 |       --- |             --- |
-|   LUT as Logic           |     0.002 |     3486 |    133800 |            2.61 |
-|   Register               |    <0.001 |     5043 |    269200 |            1.87 |
-|   CARRY4                 |    <0.001 |      204 |     33450 |            0.61 |
+| Clocks                   |     0.011 |        4 |       --- |             --- |
+| Slice Logic              |     0.004 |    11071 |       --- |             --- |
+|   LUT as Logic           |     0.003 |     3765 |    133800 |            2.81 |
+|   CARRY4                 |    <0.001 |      381 |     33450 |            1.14 |
+|   Register               |    <0.001 |     4897 |    269200 |            1.82 |
 |   LUT as Distributed RAM |    <0.001 |      152 |     46200 |            0.33 |
 |   LUT as Shift Register  |    <0.001 |      268 |     46200 |            0.58 |
-|   F7/F8 Muxes            |    <0.001 |      157 |    133800 |            0.12 |
-|   Others                 |     0.000 |     1265 |       --- |             --- |
-| Signals                  |     0.003 |     7835 |       --- |             --- |
-| Block RAM                |     0.039 |      198 |       365 |           54.25 |
+|   F7/F8 Muxes            |    <0.001 |      112 |    133800 |            0.08 |
+|   Others                 |     0.000 |      635 |       --- |             --- |
+| Signals                  |     0.005 |     7572 |       --- |             --- |
+| Block RAM                |    <0.001 |        1 |       365 |            0.27 |
 | I/O                      |     0.004 |       45 |       285 |           15.79 |
-| Static Power             |     0.148 |          |           |                 |
-| Total                    |     0.211 |          |           |                 |
+| Static Power             |     0.138 |          |           |                 |
+| Total                    |     0.163 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -75,7 +75,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.092 |       0.057 |      0.035 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.051 |       0.021 |      0.030 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.031 |       0.000 |      0.031 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.006 |       0.001 |      0.005 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -84,7 +84,7 @@ Table of Contents
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
-| Vccbram   |       1.000 |     0.009 |       0.003 |      0.005 |       NA    | Unspecified | NA         |
+| Vccbram   |       1.000 |     0.001 |       0.000 |      0.001 |       NA    | Unspecified | NA         |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |       NA    | Unspecified | NA         |
@@ -145,22 +145,14 @@ Table of Contents
 +--------------------------+-----------+
 | Name                     | Power (W) |
 +--------------------------+-----------+
-| GameTop                  |     0.064 |
-|   dbg_hub                |     0.003 |
-|     inst                 |     0.003 |
-|       BSCANID.u_xsdbm_id |     0.003 |
-|   ila_0_inst0            |     0.015 |
-|     inst                 |     0.015 |
-|       ila_core_inst      |     0.014 |
-|   sound_player           |     0.041 |
-|     music_end            |     0.010 |
-|       U0                 |     0.010 |
-|     music_false          |     0.010 |
-|       U0                 |     0.010 |
-|     music_idle           |     0.010 |
-|       U0                 |     0.010 |
-|     music_true           |     0.010 |
-|       U0                 |     0.010 |
+| GameTop                  |     0.025 |
+|   dbg_hub                |     0.002 |
+|     inst                 |     0.002 |
+|       BSCANID.u_xsdbm_id |     0.002 |
+|   ila_0_inst0            |     0.011 |
+|     inst                 |     0.011 |
+|       ila_core_inst      |     0.011 |
+|   sound_player           |     0.006 |
 +--------------------------+-----------+
 
 

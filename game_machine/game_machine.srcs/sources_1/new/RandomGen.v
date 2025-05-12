@@ -10,7 +10,7 @@ module RandomGen(
         if (!rst_n) begin
             random_num <= 8'b10101010;
         end else begin
-            random_num <= {random_num[6:0], random_num[7] ^ random_num[5]};
+            random_num <= {random_num[6:0], random_num[7] ^ random_num[5] ^ random_num[4] ^ random_num[3]};
         end
     end
 

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="GameTop_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="GameTop_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="1,499,991.841667 us"></ZoomStartTime>
+      <ZoomEndTime time="1,500,044.091668 us"></ZoomEndTime>
+      <Cursor1Time time="1,500,000.550000 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="186"></NameColumnWidth>
+      <ValueColumnWidth column_width="130"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="16" />
+   <wvobject fp_name="/GameTop_tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GameTop_tb/rst_n" type="logic">
+      <obj_property name="ElementShortName">rst_n</obj_property>
+      <obj_property name="ObjectShortName">rst_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GameTop_tb/start" type="logic">
+      <obj_property name="ElementShortName">start</obj_property>
+      <obj_property name="ObjectShortName">start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GameTop_tb/uut/effects/led" type="array">
+      <obj_property name="ElementShortName">led[7:0]</obj_property>
+      <obj_property name="ObjectShortName">led[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GameTop_tb/seg" type="array">
+      <obj_property name="ElementShortName">seg[6:0]</obj_property>
+      <obj_property name="ObjectShortName">seg[6:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GameTop_tb/select" type="array">
+      <obj_property name="ElementShortName">select[5:0]</obj_property>
+      <obj_property name="ObjectShortName">select[5:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GameTop_tb/lcd_data" type="array">
+      <obj_property name="ElementShortName">lcd_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">lcd_data[7:0]</obj_property>
+      <obj_property name="Radix">ASCIIRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GameTop_tb/lcd_enable" type="logic">
+      <obj_property name="ElementShortName">lcd_enable</obj_property>
+      <obj_property name="ObjectShortName">lcd_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GameTop_tb/lcd_rs" type="logic">
+      <obj_property name="ElementShortName">lcd_rs</obj_property>
+      <obj_property name="ObjectShortName">lcd_rs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GameTop_tb/lcd_rw" type="logic">
+      <obj_property name="ElementShortName">lcd_rw</obj_property>
+      <obj_property name="ObjectShortName">lcd_rw</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GameTop_tb/uut/btn" type="array">
+      <obj_property name="ElementShortName">btn[7:0]</obj_property>
+      <obj_property name="ObjectShortName">btn[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GameTop_tb/row" type="array">
+      <obj_property name="ElementShortName">row[3:0]</obj_property>
+      <obj_property name="ObjectShortName">row[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GameTop_tb/column" type="array">
+      <obj_property name="ElementShortName">column[3:0]</obj_property>
+      <obj_property name="ObjectShortName">column[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GameTop_tb/uut/KeyPress_u/cnt_1ms" type="array">
+      <obj_property name="ElementShortName">cnt_1ms[15:0]</obj_property>
+      <obj_property name="ObjectShortName">cnt_1ms[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GameTop_tb/uut/KeyPress_u/cnt_10ms" type="array">
+      <obj_property name="ElementShortName">cnt_10ms[18:0]</obj_property>
+      <obj_property name="ObjectShortName">cnt_10ms[18:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GameTop_tb/led" type="array">
+      <obj_property name="ElementShortName">led[7:0]</obj_property>
+      <obj_property name="ObjectShortName">led[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+</wave_config>

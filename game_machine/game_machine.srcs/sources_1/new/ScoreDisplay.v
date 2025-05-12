@@ -1,49 +1,94 @@
 `timescale 1ns / 1ps
 
-module ScoreDisplay(
-    input [5:0] score,       // 6-bit score input (max value: 48)
-    output reg [6:0] seg1,   // 7-segment display for tens place
-    output reg [6:0] seg0    // 7-segment display for ones place
-    );
+module  ScoreDisplay(
+    input sclk,       
+    input s_rst_n,       
+    input [5:0] score,  
+    output reg [5:0] sel,       
+    output reg [7:0] seg_led                 
+);
 
-    reg [3:0] tens;          // Tens place (4 bits to hold 0-9)
-    reg [3:0] ones;          // Ones place (4 bits to hold 0-9)
+reg [3:0] tens;
+reg [3:0] ones;
 
-    // Split score into tens and ones
-    always @(*) begin
-        tens = score / 10;
-        ones = score % 10;
+always @(*) begin
+    if (score >= 40) begin
+        tens = 4;
+        ones = score - 40;
+    end else if (score >= 30) begin
+        tens = 3;
+        ones = score - 30;
+    end else if (score >= 20) begin
+        tens = 2;
+        ones = score - 20;
+    end else if (score >= 10) begin
+        tens = 1;
+        ones = score - 10;
+    end else begin
+        tens = 0;
+        ones = score;
     end
+end
 
-    // 7-segment encoding
-    always @(*) begin
-        case (tens)
-            4'd0: seg1 = 7'b0000001;
-            4'd1: seg1 = 7'b1001111;
-            4'd2: seg1 = 7'b0010010;
-            4'd3: seg1 = 7'b0000110;
-            4'd4: seg1 = 7'b1001100;
-            4'd5: seg1 = 7'b0100100;
-            4'd6: seg1 = 7'b0100000;
-            4'd7: seg1 = 7'b0001111;
-            4'd8: seg1 = 7'b0000000;
-            4'd9: seg1 = 7'b0000100;
-            default: seg1 = 7'b1111111; // Blank
-        endcase
+localparam DELAY_1MS = 50_000;
+localparam SEG_ZERO  = 8'b1100_0000;
+localparam SEG_ONE   = 8'b1111_1001;
+localparam SEG_TWO   = 8'b1010_0100;
+localparam SEG_THREE = 8'b1011_0000;
+localparam SEG_FOUR  = 8'b1001_1001;
+localparam SEG_FIVE  = 8'b1001_0010;
+localparam SEG_SIX   = 8'b1000_0010;
+localparam SEG_SEVEN = 8'b1111_1000;
+localparam SEG_EIGHT = 8'b1000_0000;
+localparam SEG_NINE  = 8'b1001_0000;
+                                       
+reg [15:0] cnt_1ms;    
+   
+reg [3:0] seg_led_temp;
 
-        case (ones)
-            4'd0: seg0 = 7'b0000001;
-            4'd1: seg0 = 7'b1001111;
-            4'd2: seg0 = 7'b0010010;
-            4'd3: seg0 = 7'b0000110;
-            4'd4: seg0 = 7'b1001100;
-            4'd5: seg0 = 7'b0100100;
-            4'd6: seg0 = 7'b0100000;
-            4'd7: seg0 = 7'b0001111;
-            4'd8: seg0 = 7'b0000000;
-            4'd9: seg0 = 7'b0000100;
-            default: seg0 = 7'b1111111; // Blank
-        endcase
-    end
+always  @(posedge sclk or negedge s_rst_n) begin
+    if(s_rst_n == 1'b0)
+        cnt_1ms <= 'd0;
+    else if(cnt_1ms == (DELAY_1MS-1))
+        cnt_1ms <= 'd0;
+    else
+        cnt_1ms <= cnt_1ms + 1'b1;
+end
+
+always  @(posedge sclk or negedge s_rst_n) begin
+    if(s_rst_n == 1'b0)
+        sel <= 6'b11_1110;
+    else if(cnt_1ms == (DELAY_1MS-1))
+        sel <= {sel[4:0], sel[5]};
+end
+
+always  @(*) begin
+    case(sel)
+        6'b01_1111: seg_led_temp = ones;
+        6'b10_1111: seg_led_temp = tens;
+        6'b11_0111: seg_led_temp = 4'd0;
+        6'b11_1011: seg_led_temp = 4'd0;
+        6'b11_1101: seg_led_temp = 4'd0;
+        6'b11_1110: seg_led_temp = 4'd0;
+    endcase
+end
+
+always @ (posedge sclk or negedge s_rst_n) begin
+    if (s_rst_n == 1'b0) 
+        seg_led <= SEG_ZERO; 
+    else case(seg_led_temp)              
+        4'd0:     seg_led <= SEG_ZERO;                                                        
+        4'd1:     seg_led <= SEG_ONE  ;                            
+        4'd2:     seg_led <= SEG_TWO  ;                            
+        4'd3:     seg_led <= SEG_THREE;                            
+        4'd4:     seg_led <= SEG_FOUR ;                            
+        4'd5:     seg_led <= SEG_FIVE ;                            
+        4'd6:     seg_led <= SEG_SIX  ;                            
+        4'd7:     seg_led <= SEG_SEVEN;      
+        4'd8:     seg_led <= SEG_EIGHT;      
+        4'd9:     seg_led <= SEG_NINE ;    
+        default:  seg_led <= SEG_ZERO;
+    endcase
+end
 
 endmodule

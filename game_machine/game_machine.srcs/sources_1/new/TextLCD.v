@@ -51,14 +51,14 @@ always @(posedge clk or negedge rst_n) begin
         char_buffer[21] <= " ";
         char_buffer[22] <= " ";
         char_buffer[23] <= " ";
-        char_buffer[24] <= "A";
-        char_buffer[25] <= "S";
-        char_buffer[26] <= "I";
-        char_buffer[27] <= "C";
-        char_buffer[28] <= "2";
-        char_buffer[29] <= "0";
-        char_buffer[30] <= "2";
-        char_buffer[31] <= "5";
+        char_buffer[24] <= " ";
+        char_buffer[25] <= " ";
+        char_buffer[26] <= " ";
+        char_buffer[27] <= " ";
+        char_buffer[28] <= " ";
+        char_buffer[29] <= " ";
+        char_buffer[30] <= " ";
+        char_buffer[31] <= " ";
     end else begin
         score_bcd[0] <= "0" + (max_score / 100);
         score_bcd[1] <= "0" + ((max_score / 10) % 10);
